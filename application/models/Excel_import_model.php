@@ -8,7 +8,7 @@ class Excel_import_model extends CI_Model
 		return $query;
 	}
 
-	function insert($items,$prov_code)
+	function insert_death($items,$prov_code)
 	{
 		//$this->db->insert_batch('person_survey_test', $data);
 		$n = 0;
@@ -25,13 +25,23 @@ class Excel_import_model extends CI_Model
 		$this->db->trans_complete();
 		return $n;
 	}
-
-	public function check_person_cid($cid)
+	function insert_birth($items,$prov_code,$import_year)
 	{
-		$rs = $this->db
-			->from("person_survey")
-			->where('cid', $cid)
-			->count_all_results();
-		return $rs;
+		//$this->db->insert_batch('person_survey_test', $data);
+		$n = 0;
+		$table = 'birth_'.$prov_code;
+		$rs = $this->db->where('BYEAR', $import_year)->delete($table);
+		$this->db->trans_start();
+		foreach ($items as $item) {
+			$insert_query = $this->db->insert_string($table, $item);
+			$insert_query = str_replace('INSERT INTO', 'INSERT IGNORE INTO', $insert_query);
+			$rs = $this->db->query($insert_query);
+			if ($rs) {
+				$n++;
+			}
+		}
+		$this->db->trans_complete();
+		return $n;
 	}
+
 }

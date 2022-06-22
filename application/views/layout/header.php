@@ -39,8 +39,8 @@
                         Admin
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="<?php echo site_url('/import_death'); ?>">นำเข้าข้อมูลการตาย กยผ. </a></li>
-                        <li><a class="dropdown-item" href="<?php echo site_url('/report/runner_hosp'); ?>"> รายงานก้าวท้าใจใน หน่วยบริการ</a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/death'); ?>">นำเข้าข้อมูลการตาย กยผ. </a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/birth'); ?>">นำเข้าข้อมูลการเกิด กยผ. </a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/runner_ampur'); ?>"> รายงานก้าวท้าใจ รายอำเภอ</a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/runner_province'); ?>"> รายงานก้าวท้าใจรายจังหวัด</a></li>
                     </ul>
