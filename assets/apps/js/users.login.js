@@ -31,7 +31,6 @@ $(document).ready(function () {
 
   $("#btn_login").on("click", function (e) {
     e.preventDefault();
-    console.log("click");
     var username = $("#username").val();
     var password = $("#password").val();
 

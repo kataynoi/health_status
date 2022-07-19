@@ -8,53 +8,29 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
 
             <ul class="navbar-nav ms-auto">
-                <?php if ($this->session->userdata('user_level') == 'hospital') {
+                <?php if ($this->session->userdata('user_level') == 'admin') {
 
                 ?>
                     <li class=" nav-item mx-0 mx-lg-1 dropdown">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            จัดการข้อมูล อสม.
+                            Admin
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="<?php echo site_url('/asm'); ?>"> เพิ่ม ลบ แก้ไข อสม. </a></li>
-                        </ul>
-                        </i>
-                    </li>
-                <?php }
-                if ($this->session->userdata('user_level') == 'asm') {
-                ?>
-                    <li class=" nav-item mx-0 mx-lg-1 dropdown">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            หลังคาเรือนรับผิดชอบ
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="<?php echo site_url('/home'); ?>">กำหนดหลังคาเรือนรับผิดชอบ </a></li>
-                            <li><a class="dropdown-item" href="<?php echo site_url('/person'); ?>"> ประชาชนที่อยู่ในบ้านรับผิดชอบ</a></li>
-                        </ul>
-                        </i>
-                    </li>
-                <?php } ?>
-                <li class=" nav-item mx-0 mx-lg-1 dropdown">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Admin
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/death'); ?>">นำเข้าข้อมูลการตาย กยผ. </a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/birth'); ?>">นำเข้าข้อมูลการเกิด กยผ. </a></li>
-                        <li><a class="dropdown-item" href="<?php echo site_url('/report/runner_ampur'); ?>"> รายงานก้าวท้าใจ รายอำเภอ</a></li>
-                        <li><a class="dropdown-item" href="<?php echo site_url('/report/runner_province'); ?>"> รายงานก้าวท้าใจรายจังหวัด</a></li>
-                    </ul>
-                    </i>
-                </li>
+                      
+                        </ul>
+                        </i>
+                    </li>
+            
+    <?php }?>
                 <li class=" nav-item mx-0 mx-lg-1 dropdown">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        อสม.หยิบ 10
+                        Reports
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="<?php echo site_url('/person_asm'); ?>">อสม.หยิบ 10 </a></li>
-                        <li><a class="dropdown-item" href="<?php echo site_url('/report/asm_hosp'); ?>">อสม. หยิบ 10 หน่วยบริการ</a></li>
-                        <li><a class="dropdown-item" href="<?php echo site_url('/report/asm_ampur'); ?>"> อสม.หยิบ 10 รายอำเภอ</a></li>
-                        <li><a class="dropdown-item" href="<?php echo site_url('/report/asm_province'); ?>"> อสม.หยิบ 10 รายจังหวัด</a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/report/disease'); ?>">สาเหตุการตายรายโรค </a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/report/asm_hosp'); ?>">......</a></li>
                     </ul>
                     </i>
                 </li>

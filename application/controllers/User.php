@@ -101,36 +101,20 @@ class User extends CI_Controller
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $check_user = substr($username,0,7);
         //echo $check_user;
-        if($check_user=='vaccine'){
-            $rs = $this->user->do_auth_hospital($username, $password);
+            $rs = $this->user->do_auth($username, $password);
             if ($rs['id']) {
                 $rs['id'] = substr($username,8,5);
                 $rs['hospcode'] = substr($username,8,5);
                 $rs['asm_login'] = true;
                 $rs['fullname'] = $rs['name'];
-                $rs['user_level'] = 'hospital';
+                $rs['user_level'] = 'admin';
                 $this->session->set_userdata($rs);
                 $json = '{"success": true, "msg": "" }';
             } else {
                 $json = '{"success": false, "msg": "Username หรือ Password ไม่ถูกต้อง"}';
             }
-        }else{
-            $rs = $this->user->do_auth_asm($username, $password);
-            if ($rs['cid']) {
-                $rs['id'] = $rs['cid'];
-                $rs['hospcode'] = $rs['hospcode'];
-                $rs['asm_login'] = true;
-                $rs['fullname'] = $rs['name']." ".$rs['lname'];
-                $rs['user_level'] = 'asm';
-                $this->session->set_userdata($rs);
-                $json = '{"success": true, "msg": "Login Success" }';
-            } else {
-                $json = '{"success": false, "msg": "Username หรือ Password ไม่ถูกต้อง"}';
-            }
-        }
-        
+
 
         render_json($json);
     }

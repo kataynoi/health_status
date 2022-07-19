@@ -6,10 +6,8 @@ class Excel_import extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        /*  if ($this->session->userdata("user_type") != 1)
+        if ($this->session->userdata("user_level") != 'admin')
             redirect(site_url("user/login"));
-            
-    */
         $this->load->model('excel_import_model');
         $this->load->library('excel');
         $this->prov_code = $this->config->item('prov_code');
@@ -122,7 +120,7 @@ class Excel_import extends CI_Controller
             foreach ($object->getWorksheetIterator() as $worksheet) {
                 $highestRow = $worksheet->getHighestRow();
                 $highestColumn = $worksheet->getHighestColumn();
-                $import_year=0;
+                $import_year = 0;
                 for ($row = 2; $row <= $highestRow; $row++) {
 
                     $prov = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
@@ -141,7 +139,9 @@ class Excel_import extends CI_Controller
                     $mptell = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
                     $dptell = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
                     $maddr = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
-                    if($row==2){$import_year=$byear;}
+                    if ($row == 2) {
+                        $import_year = $byear;
+                    }
                     $data[] = array(
                         'DATE_IMPORT' => date("Y-m-d H:i:s"),
                         'PROV' => $prov,
@@ -160,13 +160,13 @@ class Excel_import extends CI_Controller
                         'MPTELL' => $mptell,
                         'DPTELL' => $dptell,
                         'MADDR' => $maddr
-                        
+
                     );
                 }
             }
             //console_log($data);
             if (count($data) > 0) {
-                $rs = $this->excel_import_model->insert_birth($data, $this->prov_code,$import_year);
+                $rs = $this->excel_import_model->insert_birth($data, $this->prov_code, $import_year);
             } else {
                 $rs = 0;
             }
