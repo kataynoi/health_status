@@ -31,15 +31,19 @@ class Reports_model extends CI_Model
     public function death_disease($ampur = '', $disease, $year)
     {
 
-        $table = "death_home_" . $this->config->item('prov_code');
+        $provcode=$this->config->item('prov_code');
+        $table = "death_home_" .$provcode ;
+
         if ($ampur == '') {
             $where = " ";
             $group = " LEFT(a.lccaattmm,4)";
-            $select = "d.ampurname as name";
+            $select = "d.ampurname as name,e.all_sex as person_all,e.male as person_male,e.female as person_female";
+            $join = " LEFT JOIN (SELECT * FROM pop_ampur WHERE n_year= ".$year." AND provcode=".$provcode.") e ON  d.ampurcodefull = e.ampurcode";
         } else if ($ampur != '') {
             $where = "AND d.ampurcodefull= '" . $ampur . "' ";
             $group = " a.hospcode";
-            $select = "c.hosname as name";
+            $select = "c.hosname as name,null as person_all,null as person_male,null as person_female";
+            $join = "";
         }
 
         $sql = "SELECT " . $select . ",count(a.PID) death_total
@@ -48,8 +52,9 @@ class Reports_model extends CI_Model
         FROM " . $table . " a 
         LEFT JOIN chospital c ON a.HOSPCODE = c.hoscode
         LEFT JOIN (SELECT * FROM campur WHERE changwatcode=44) d ON LEFT(a.lccaattmm,4) = d.ampurcodefull
-        WHERE 1=1 " . $where . " " . $disease . " AND LEFT(a.lccaattmm,2) ='" . $this->config->item('prov_code') . "'
-        AND YEAR_NGOB =" . $year . " 
+        ".$join." 
+        WHERE 1=1 " . $where . "  AND LEFT(a.lccaattmm,2) ='" . $this->config->item('prov_code') . "'
+        AND YEAR_NGOB =" . $year ." ". $disease ." 
         GROUP BY " . $group . ";
         ";
         //echo $sql;

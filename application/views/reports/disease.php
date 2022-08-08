@@ -36,7 +36,7 @@
 
                     echo "<tr>";
                     echo "<td>$n</td>
-                    <td><a href=".site_url('/report/death_disease/').$r->id." target='_blank'>$r->name </a></td></tr>";
+                    <td><a href=".site_url('/report/death_disease/').$r->id." target='_blank' class='text-decoration-none'>$r->name </a></td></tr>";
                     $n++;
                 }
 

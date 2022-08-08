@@ -30,7 +30,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/disease'); ?>">สาเหตุการตายรายโรค </a></li>
-                        <li><a class="dropdown-item" href="<?php echo site_url('/report/asm_hosp'); ?>">......</a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/report/group_disease_stat'); ?>">จำนวนการตายตามกลุ่มโรค (สถิติจังหวัด)</a></li>
                     </ul>
                     </i>
                 </li>

@@ -1,6 +1,10 @@
+<br>
+<br>
+<br>
+
 <?php
-for ($x = 5; $x <= 16; $x=$x+2) 
+for ($x = 0; $x <= 101; $x=$x+1) 
 {
-   echo "The number is: $x <br>";
+   echo "FEMALE_AGE$x+";
 }  
 ?>
