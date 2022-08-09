@@ -11,7 +11,7 @@ class Welcome extends CI_Controller
             redirect(site_url("user/login"));*/
         $this->layout->setLayout('default_layout');
         $this->db = $this->load->database('default', true);
-        $this->load->model('Basic_model', 'crud');
+        $this->load->model('Basic_model', 'basic');
         $this->load->model('Dashboard_model', 'dash');
     }
 
@@ -20,6 +20,9 @@ class Welcome extends CI_Controller
 
         //$data['summary'] = $this->dash->get_summary();
         //$data['ampur'] = $this->dash->get_summary_ampur();
+        $last_death = $this->session->userdata('last_death');
+        $last_death = $this->basic->get_last_death();
+        $this->session->set_userdata('last_death',$last_death);
         $data[]='';
         $this->layout->view('dashboard/index_view', $data);
     }

@@ -15,7 +15,7 @@
 </style>
 <div class="panel panel-info">
     <div class="panel-heading">
-        <?php echo $report_name; ?>
+        <?php echo $report_name." [ประมวลผลการตายล่าสุด ".to_thai_date($this->session->userdata('last_death'))."]"; ?>
     </div>
     <div class="panel-body">
 <?php echo "Year :".$this->session->userdata('year_ngob');?>

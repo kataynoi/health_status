@@ -190,5 +190,15 @@ class Basic_model extends CI_Model
             ->update($table);
         return $rs;
     }
+    public function get_last_death()
+    {
+        $table = "death_home_" .$this->config->item('prov_code'); ;
+
+        $rs = $this->db
+            ->select('MAX(D_DEATH) as MAX')
+            ->get($table)
+            ->row();
+        return $rs ? $rs->MAX : '-';
+    }
 
 }

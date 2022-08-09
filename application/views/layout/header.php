@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="<?php echo base_url(); ?>">สถิติชีพ จังหวัดมหาสารคาม </a>
@@ -29,6 +30,7 @@
                         Reports
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="<?php echo site_url('//report/death_disease/19'); ?>">อัตราตายต่อแสนประชากร </a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/disease'); ?>">สาเหตุการตายรายโรค </a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/group_disease_stat'); ?>">จำนวนการตายตามกลุ่มโรค (สถิติจังหวัด)</a></li>
                     </ul>
