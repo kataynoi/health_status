@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="<?php echo base_url(); ?>">สถิติชีพ จังหวัดมหาสารคาม </a>
@@ -17,20 +16,21 @@
                             Admin
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/death'); ?>">นำเข้าข้อมูลการตาย กยผ. </a></li>
-                        <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/birth'); ?>">นำเข้าข้อมูลการเกิด กยผ. </a></li>
-                      
+                            <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/death'); ?>">นำเข้าข้อมูลการตาย กยผ. </a></li>
+                            <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/birth'); ?>">นำเข้าข้อมูลการเกิด กยผ. </a></li>
+
                         </ul>
                         </i>
                     </li>
-            
-    <?php }?>
+
+                <?php } ?>
                 <li class=" nav-item mx-0 mx-lg-1 dropdown">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         Reports
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="<?php echo site_url('//report/death_disease/19'); ?>">อัตราตายต่อแสนประชากร </a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('//report/birth'); ?>">อัตราเกิดต่อแสนประชากร </a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('//report/death_disease/19'); ?>">อัตราตายต่อแสนประชากร </a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/disease'); ?>">สาเหตุการตายรายโรค </a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/group_disease_stat'); ?>">จำนวนการตายตามกลุ่มโรค (สถิติจังหวัด)</a></li>
                     </ul>

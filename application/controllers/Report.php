@@ -50,7 +50,24 @@ class Report extends CI_Controller
         
         $this->layout->view('reports/death_disease', $data);
     }
+    public function  birth()
+    {
+        $ampur=$this->input->post('ampurcode');
+        $tambon=$this->input->post('tamboncode');
+        $year =$this->input->post('year_ngob');
+        if(!isset($year)){
+            $year=$this->config->item('year_ngob');
+        }
+        $hospcode = $this->session->userdata('hospcode');
+        
+        $data['amp']=$this->basic->get_ampur_list('44');
+        $this->session->set_userdata('ampur',$ampur);
+        $this->session->set_userdata('year_ngob',$year);
+        $data['report'] = $this->crud->birth($ampur,$year);
 
+        
+        $this->layout->view('reports/birth', $data);
+    }
     public function  group_disease_stat($id=1)
     {
         $ampur=$this->input->post('ampurcode');

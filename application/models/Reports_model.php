@@ -63,7 +63,42 @@ class Reports_model extends CI_Model
 
         return $rs;
     }
-    // Runner reports
+
+    public function birth($ampur = '', $year)
+    {
+
+        $provcode=$this->config->item('prov_code');
+        $table = "birth_" .$provcode ;
+
+        if ($ampur == '') {
+            $where = " ";
+            $group = " a.ampur";
+            $select = "d.ampurname as name,e.all_sex as person_all,e.male as person_male,e.female as person_female";
+            $join = " LEFT JOIN (SELECT * FROM pop_ampur WHERE n_year= ".$year." AND provcode=".$provcode.") e ON  d.ampurcodefull = e.ampurcode";
+        } else if ($ampur != '') {
+            $where = "AND d.ampurcodefull= '" . $ampur . "' ";
+            $group = " a.hospcode";
+            $select = "c.hosname as name,null as person_all,null as person_male,null as person_female";
+            $join = "";
+        }
+
+        $sql = "SELECT " . $select . ",count(a.PROV) death_total
+        ,SUM(IF(a.sex=1,1,0)) as male 
+        ,SUM(IF(a.sex=2,1,0)) as female  
+        FROM " . $table . " a 
+        LEFT JOIN (SELECT * FROM campur WHERE changwatcode=44) d ON a.ampur = d.ampurcodefull
+        ".$join." 
+        WHERE 1=1 " . $where . "  AND LEFT(a.ampur,2) ='" . $this->config->item('prov_code') . "'
+        AND BYEAR =" . $year ."
+        GROUP BY " . $group . ";
+        ";
+        //echo $sql;
+        $rs = $this->db->query($sql)->result();
+        //echo $this->db->last_query();
+
+        return $rs;
+    }
+    
 
 
 }
