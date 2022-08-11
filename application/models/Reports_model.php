@@ -31,14 +31,14 @@ class Reports_model extends CI_Model
     public function death_disease($ampur = '', $disease, $year)
     {
 
-        $provcode=$this->config->item('prov_code');
-        $table = "death_home_" .$provcode ;
+        $provcode = $this->config->item('prov_code');
+        $table = "death_home_" . $provcode;
 
         if ($ampur == '') {
             $where = " ";
             $group = " LEFT(a.lccaattmm,4)";
             $select = "d.ampurname as name,e.all_sex as person_all,e.male as person_male,e.female as person_female";
-            $join = " LEFT JOIN (SELECT * FROM pop_ampur WHERE n_year= ".$year." AND provcode=".$provcode.") e ON  d.ampurcodefull = e.ampurcode";
+            $join = " LEFT JOIN (SELECT * FROM pop_ampur WHERE n_year= " . $year . " AND provcode=" . $provcode . ") e ON  d.ampurcodefull = e.ampurcode";
         } else if ($ampur != '') {
             $where = "AND d.ampurcodefull= '" . $ampur . "' ";
             $group = " a.hospcode";
@@ -52,9 +52,9 @@ class Reports_model extends CI_Model
         FROM " . $table . " a 
         LEFT JOIN chospital c ON a.HOSPCODE = c.hoscode
         LEFT JOIN (SELECT * FROM campur WHERE changwatcode=44) d ON LEFT(a.lccaattmm,4) = d.ampurcodefull
-        ".$join." 
+        " . $join . " 
         WHERE 1=1 " . $where . "  AND LEFT(a.lccaattmm,2) ='" . $this->config->item('prov_code') . "'
-        AND YEAR_NGOB =" . $year ." ". $disease ." 
+        AND YEAR_NGOB =" . $year . " " . $disease . " 
         GROUP BY " . $group . ";
         ";
         //echo $sql;
@@ -67,14 +67,14 @@ class Reports_model extends CI_Model
     public function birth($ampur = '', $year)
     {
 
-        $provcode=$this->config->item('prov_code');
-        $table = "birth_" .$provcode ;
+        $provcode = $this->config->item('prov_code');
+        $table = "rp_le_home_r7";
 
         if ($ampur == '') {
             $where = " ";
             $group = " a.ampur";
             $select = "d.ampurname as name,e.all_sex as person_all,e.male as person_male,e.female as person_female";
-            $join = " LEFT JOIN (SELECT * FROM pop_ampur WHERE n_year= ".$year." AND provcode=".$provcode.") e ON  d.ampurcodefull = e.ampurcode";
+            $join = " LEFT JOIN (SELECT * FROM pop_ampur WHERE n_year= " . $year . " AND provcode=" . $provcode . ") e ON  d.ampurcodefull = e.ampurcode";
         } else if ($ampur != '') {
             $where = "AND d.ampurcodefull= '" . $ampur . "' ";
             $group = " a.hospcode";
@@ -87,9 +87,9 @@ class Reports_model extends CI_Model
         ,SUM(IF(a.sex=2,1,0)) as female  
         FROM " . $table . " a 
         LEFT JOIN (SELECT * FROM campur WHERE changwatcode=44) d ON a.ampur = d.ampurcodefull
-        ".$join." 
+        " . $join . " 
         WHERE 1=1 " . $where . "  AND LEFT(a.ampur,2) ='" . $this->config->item('prov_code') . "'
-        AND BYEAR =" . $year ."
+        AND BYEAR =" . $year . "
         GROUP BY " . $group . ";
         ";
         //echo $sql;
@@ -98,9 +98,81 @@ class Reports_model extends CI_Model
 
         return $rs;
     }
-    
 
 
+    public function le7($sex = 0)
+    {
+
+        if ($sex == 1) {
+            $sql_sex = "AND sex = '1'";
+        } else if ($sex == 2) {
+            $sql_sex = "AND sex = '2'";
+        } else {
+            $sql_sex = "AND sex = '3'";
+        }
+
+        $provcode = $this->config->item('prov_code');
+        $sql = "SELECT
+        rp_le_home_r7.prov,
+        rp_le_home_r7.`no`,
+        rp_le_home_r7.age_gr,
+        rp_le_home_r7.sex,
+        rp_le_home_r7.y2016,
+        rp_le_home_r7.y2017,
+        rp_le_home_r7.y2018,
+        rp_le_home_r7.y2019,
+        rp_le_home_r7.y2020
+        FROM
+        rp_le_home_r7
+        WHERE 
+        # 4 = 'เขตสุขภาพที่  7 ,   40  = ขอนแก่น  ,  44  =  มหาสารคาม ,  45  = ร้อยเอ็ด ,  46  = กาฬสินธุ์  
+        #Prov = '4' AND 
+        # no = อายุเมื่อแรกเกิด
+        no = '1' 
+        # เพศ   1  = ชาย   2  = หญิง   3  = รวม
+        " . $sql_sex;
+        //echo $sql;
+        $rs = $this->db->query($sql)->result();
+        //echo $this->db->last_query();
+        return $rs;
+    }
+
+    public function hale7($sex = 0)
+    {
+
+        if ($sex == 1) {
+            $sql_sex = "AND sex = '1'";
+        } else if ($sex == 2) {
+            $sql_sex = "AND sex = '2'";
+        } else {
+            $sql_sex = "AND sex = '3'";
+        }
+
+        $provcode = $this->config->item('prov_code');
+        $sql = "SELECT
+        rp_hale_home_r7.prov,
+        rp_hale_home_r7.`no`,
+        rp_hale_home_r7.age_gr,
+        rp_hale_home_r7.sex,
+        rp_hale_home_r7.y2016,
+        rp_hale_home_r7.y2017,
+        rp_hale_home_r7.y2018,
+        rp_hale_home_r7.y2019,
+        rp_hale_home_r7.y2020
+        FROM
+        rp_hale_home_r7
+        WHERE 
+        # 4 = 'เขตสุขภาพที่  7 ,   40  = ขอนแก่น  ,  44  =  มหาสารคาม ,  45  = ร้อยเอ็ด ,  46  = กาฬสินธุ์  
+        #Prov = '4' AND 
+        # no = อายุเมื่อแรกเกิด
+        no = '1' 
+        # เพศ   1  = ชาย   2  = หญิง   3  = รวม
+        " . $sql_sex;
+        //echo $sql;
+        $rs = $this->db->query($sql)->result();
+        //echo $this->db->last_query();
+        return $rs;
+    }
 }
 /* End of file basic_model.php */
 /* Location: ./application/models/basic_model.php */

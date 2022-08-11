@@ -15,7 +15,7 @@
 </style>
 <div class="panel panel-info">
     <div class="panel-heading">
-        อัตราการเกิดต่อแสนประชากร
+        อัตราการเกิดต่อแสนประชากร 
     </div>
     <div class="panel-body">
 <?php echo "Year :".$this->session->userdata('year_ngob');?>

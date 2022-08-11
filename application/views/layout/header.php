@@ -33,6 +33,11 @@
                         <li><a class="dropdown-item" href="<?php echo site_url('//report/death_disease/19'); ?>">อัตราตายต่อแสนประชากร </a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/disease'); ?>">สาเหตุการตายรายโรค </a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/group_disease_stat'); ?>">จำนวนการตายตามกลุ่มโรค (สถิติจังหวัด)</a></li>
+                        <li class="divider"></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/report/le'); ?>">LE (Life Expectancy)</a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/report/hale'); ?>">HALE (Health-adjusted life expectancy)</a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/report/yll'); ?>">YLL (Years of life lost)</a></li>
+
                     </ul>
                     </i>
                 </li>

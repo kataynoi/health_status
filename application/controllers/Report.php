@@ -68,6 +68,26 @@ class Report extends CI_Controller
         
         $this->layout->view('reports/birth', $data);
     }
+    public function  le()
+    {
+
+        $data['le7'] = $this->crud->le7();
+        $data['le7_male'] = $this->crud->le7(1);
+        $data['le7_female'] = $this->crud->le7(2);
+
+        
+        $this->layout->view('reports/le7', $data);
+    }
+
+    public function  hale()
+    {
+ 
+        $data['hale7'] = $this->crud->hale7();
+        $data['hale7_male'] = $this->crud->hale7(1);
+        $data['hale7_female'] = $this->crud->hale7(2);
+        
+        $this->layout->view('reports/hale7', $data);
+    }
     public function  group_disease_stat($id=1)
     {
         $ampur=$this->input->post('ampurcode');
