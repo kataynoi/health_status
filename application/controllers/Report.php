@@ -88,6 +88,22 @@ class Report extends CI_Controller
         
         $this->layout->view('reports/hale7', $data);
     }
+
+    public function  yll7()
+    {
+ 
+        $prov_code =$this->input->post('prov_code');
+        if($prov_code==''){
+            $prov_code=$this->config->item('prov_code');
+            
+        }
+        $this->session->set_userdata('prov_code',$prov_code);
+        $data['yll7'] = $this->crud->yll7(3,$prov_code);
+        //$data['yll7_male'] = $this->crud->yll7(1,$prov_code);
+        //$data['yll7_female'] = $this->crud->yll7(2,$prov_code);
+        
+        $this->layout->view('reports/yll7', $data);
+    }
     public function  group_disease_stat($id=1)
     {
         $ampur=$this->input->post('ampurcode');

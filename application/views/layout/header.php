@@ -36,7 +36,7 @@
                         <li class="divider"></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/le'); ?>">LE (Life Expectancy)</a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/hale'); ?>">HALE (Health-adjusted life expectancy)</a></li>
-                        <li><a class="dropdown-item" href="<?php echo site_url('/report/yll'); ?>">YLL (Years of life lost)</a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/report/yll7'); ?>">YLL (Years of life lost)</a></li>
 
                     </ul>
                     </i>

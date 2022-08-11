@@ -15,10 +15,10 @@
 </style>
 <div class="panel panel-info">
     <div class="panel-heading">
-        <?php echo $report_name." [ประมวลผลการตายล่าสุด ".to_thai_date($this->session->userdata('last_death'))."]"; ?>
+        <?php echo $report_name . " [ประมวลผลการตายล่าสุด " . to_thai_date($this->session->userdata('last_death')) . "]"; ?>
     </div>
     <div class="panel-body">
-<?php echo "Year :".$this->session->userdata('year_ngob');?>
+        <?php echo "Year :" . $this->session->userdata('year_ngob'); ?>
         <div class="navbar navbar-default">
             <form action="<?php echo site_url('report/death_disease/') . $id ?>" class="form-row" method="post">
                 <div class="row">
@@ -28,8 +28,8 @@
                             <?php
                             $year_ngob = $this->config->item('year_ngob');
                             for ($i = $year_ngob; $i >= $year_ngob - 10; $i--) {
-                                $selected='';
-                                if($i==$this->session->userdata('year_ngob')){
+                                $selected = '';
+                                if ($i == $this->session->userdata('year_ngob')) {
                                     $selected = 'selected';
                                 }
                                 echo '<option value=' . $i . ' ' . $selected . '>' . $i . '</option>';
@@ -76,7 +76,7 @@
                     <th>ชาย</th>
                     <th>หญิง</th>
                     <th>รวม</th>
-                    
+
 
                 </tr>
             </thead>
@@ -95,9 +95,9 @@
                     $percent = '';
                     if ($r->death_total > 0) {
                         //$percent = $r->death_total * 100 / $person;
-                        $r->person_all>0 ?$percent_all = $r->death_total*100000/$r->person_all:$percent_all = 0.00;;
-                        $r->person_male >0 ?$percent_male = $r->male*100000/$r->person_male:$percent_male = 0.00;;
-                        $r->person_female >0 ?$percent_female = $r->female*100000/$r->person_female:$percent_female = 0.00;;
+                        $r->person_all > 0 ? $percent_all = $r->death_total * 100000 / $r->person_all : $percent_all = 0.00;;
+                        $r->person_male > 0 ? $percent_male = $r->male * 100000 / $r->person_male : $percent_male = 0.00;;
+                        $r->person_female > 0 ? $percent_female = $r->female * 100000 / $r->person_female : $percent_female = 0.00;;
                     } else {
                         $percent_all = 0.00;
                         $percent_male = 0.00;
@@ -134,9 +134,9 @@
                     <td class=''>" . number_format($total_male) . "</td>
                     <td class=''>" . number_format($total_female) . "</td>
                     <td class=''>" . number_format($total_death) . "</td>
-                    <td class=''>" . number_format($total_person_male >0 ?$total_male*100000/$total_person_male:0,2) . "</td>
-                    <td class=''>" . number_format($total_person_female >0 ?$total_female*100000/$total_person_female:0,2) . "</td>
-                    <td class=''>" . number_format($total_person >0?$total_death*100000/$total_person:0,2) . "</td>
+                    <td class=''>" . number_format($total_person_male > 0 ? $total_male * 100000 / $total_person_male : 0, 2) . "</td>
+                    <td class=''>" . number_format($total_person_female > 0 ? $total_female * 100000 / $total_person_female : 0, 2) . "</td>
+                    <td class=''>" . number_format($total_person > 0 ? $total_death * 100000 / $total_person : 0, 2) . "</td>
                     </tr>";
 
                 ?>

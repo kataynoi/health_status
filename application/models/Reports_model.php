@@ -173,6 +173,43 @@ class Reports_model extends CI_Model
         //echo $this->db->last_query();
         return $rs;
     }
+
+    public function yll7($sex = 0,$provcode)
+    {
+
+        if ($sex == 1) {
+            $sql_sex = "M";
+        } else if ($sex == 2) {
+            $sql_sex = "F";
+        } else {
+            $sql_sex = "B";
+        }
+
+     
+        $sql = "SELECT
+        z5_rp_yll_home2.n,
+        z5_rp_yll_home2.prov,
+        z5_rp_yll_home2.SEX,
+        z5_rp_yll_home2.gr_disease,
+        z5_rp_yll_home2.gr_diseaseTH,
+        z5_rp_yll_home2.y2018,
+        z5_rp_yll_home2.y2019,
+        z5_rp_yll_home2.y2020
+        FROM
+        z5_rp_yll_home2
+        WHERE
+        #prov  4 = เขต   40 ขอนแก่น    44มหาสารคาม   45ร้อยเอ็ด  46กาฬสินธุ์
+        z5_rp_yll_home2.prov = '".$provcode."' AND
+        # Sex B = ทั้งหมด,   F = หญิง  ,   M = ชาย
+        z5_rp_yll_home2.SEX = '".$sql_sex."'
+        ORDER BY
+        z5_rp_yll_home2.y2020 DESC
+        LIMIT 20 ";
+        
+        $rs = $this->db->query($sql)->result();
+        //echo $this->db->last_query();
+        return $rs;
+    }
 }
 /* End of file basic_model.php */
 /* Location: ./application/models/basic_model.php */
