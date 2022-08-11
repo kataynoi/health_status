@@ -68,7 +68,7 @@ class Reports_model extends CI_Model
     {
 
         $provcode = $this->config->item('prov_code');
-        $table = "rp_le_home_r7";
+        $table = "birth_" . $provcode;;
 
         if ($ampur == '') {
             $where = " ";
