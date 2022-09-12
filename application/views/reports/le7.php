@@ -36,7 +36,7 @@
             <tbody>
                 <?php
                 $n = 1;
-
+               // print_r($le7);
                 foreach ($le7 as $r) {
                     switch ($r->prov) {
                         case '4':
@@ -98,7 +98,6 @@
             <tbody>
                 <?php
                 $n = 1;
-
                 foreach ($le7_male as $r) {
                     switch ($r->prov) {
                         case '4':
