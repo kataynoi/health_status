@@ -5,17 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Basic_model extends CI_Model
 {
 
-    public function get_boss()
-    {
-
-        $rs = $this->db
-            ->select('a.boss,CONCAT(b.prename,b.name) as name,b.position')
-            ->where('a.id', '00452')
-            ->join('employee b', 'a.boss = b.id')
-            ->get('chospital a')
-            ->row_array();
-        return $rs;
-    }
+    
 
     public function get_office()
     {
@@ -38,35 +28,6 @@ class Basic_model extends CI_Model
         return $rs;
     }
 
-    public function sl_group()
-    {
-
-        $rs = $this->db
-            //->where('provcode',$id)
-            ->get('co_workgroup')
-            ->result();
-        return $rs;
-    }
-
-    public function sl_employee_type()
-    {
-
-        $rs = $this->db
-            //->where('provcode',$id)
-            ->get('cemployee_type')
-            ->result();
-        return $rs;
-    }
-
-    public function sl_cars()
-    {
-
-        $rs = $this->db
-            //->where('provcode',$id)
-            ->get('car')
-            ->result();
-        return $rs;
-    }
 
     public function get_user_name($id)
     {
@@ -192,7 +153,7 @@ class Basic_model extends CI_Model
     }
     public function get_last_death()
     {
-        $table = "death_home_" .$this->config->item('prov_code'); ;
+        $table = "death_home";
 
         $rs = $this->db
             ->select('MAX(D_DEATH) as MAX')

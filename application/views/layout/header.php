@@ -16,7 +16,8 @@
                             Admin
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/death'); ?>">นำเข้าข้อมูลการตาย กยผ. </a></li>
+                            <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/death_home'); ?>">นำเข้าข้อมูลการตาย [HOME] กยผ. </a></li>
+                            <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/death_hos'); ?>">นำเข้าข้อมูลการตาย [HOSPITAL] กยผ. </a></li>
                             <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/birth'); ?>">นำเข้าข้อมูลการเกิด กยผ. </a></li>
 
                         </ul>

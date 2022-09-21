@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+/**
+ * @author  Mr.Dechachit Kaewmaung <rianpit@yahoo.com>
+ * @copyright   MKHO <http://mkho.moph.go.th>
+ */
 class Report extends CI_Controller
 {
     public $user_id;
@@ -72,15 +75,14 @@ class Report extends CI_Controller
     public function  hale()
     {
         $url = $this->config->item('web_api') . "/reports/hale";
-  
-        $data1 = array("sex"=>"1");
-        $data2 = array("sex"=>"2");
-        $data3 = array("sex"=>"3");
-        $data['hale7'] = (array)json_decode($this->CallAPI($url,$data3));
-        $data['hale7_male'] = (array)json_decode($this->CallAPI($url,$data1));
-        $data['hale7_female'] = (array)json_decode($this->CallAPI($url,$data2));
-        $this->layout->view('reports/hale7', $data);
 
+        $data1 = array("sex" => "1");
+        $data2 = array("sex" => "2");
+        $data3 = array("sex" => "3");
+        $data['hale7'] = (array)json_decode($this->CallAPI($url, $data3));
+        $data['hale7_male'] = (array)json_decode($this->CallAPI($url, $data1));
+        $data['hale7_female'] = (array)json_decode($this->CallAPI($url, $data2));
+        $this->layout->view('reports/hale7', $data);
     }
 
     public function  yll7()
@@ -92,14 +94,14 @@ class Report extends CI_Controller
         }
         $this->session->set_userdata('prov_code', $prov_code);
         $url = $this->config->item('web_api') . "/reports/yll";
-  
-        $data1 = array("sex"=>"1","prov"=>$prov_code);
-        $data2 = array("sex"=>"2","prov"=>$prov_code);
-        $data3 = array("sex"=>"3","prov"=>$prov_code);
-   
-        $data['yll7'] = (array)json_decode($this->CallAPI($url,$data3));
-        $data['yll7_male'] = (array)json_decode($this->CallAPI($url,$data1));
-        $data['yll7_female'] = (array)json_decode($this->CallAPI($url,$data2));
+
+        $data1 = array("sex" => "1", "prov" => $prov_code);
+        $data2 = array("sex" => "2", "prov" => $prov_code);
+        $data3 = array("sex" => "3", "prov" => $prov_code);
+
+        $data['yll7'] = (array)json_decode($this->CallAPI($url, $data3));
+        $data['yll7_male'] = (array)json_decode($this->CallAPI($url, $data1));
+        $data['yll7_female'] = (array)json_decode($this->CallAPI($url, $data2));
         $this->layout->view('reports/yll7', $data);
     }
     public function  group_disease_stat($id = 1)
@@ -129,24 +131,26 @@ class Report extends CI_Controller
     public function le()
     {
         $url = $this->config->item('web_api') . "/reports/le";
-  
-        $data1 = array("sex"=>"1");
-        $data2 = array("sex"=>"2");
-        $data3 = array("sex"=>"3");
-        $data['le7'] = (array)json_decode($this->CallAPI($url,$data3));
-        $data['le7_male'] = (array)json_decode($this->CallAPI($url,$data1));
-        $data['le7_female'] = (array)json_decode($this->CallAPI($url,$data2));
+
+        $data1 = array("sex" => "1");
+        $data2 = array("sex" => "2");
+        $data3 = array("sex" => "3");
+        $data['le7'] = (array)json_decode($this->CallAPI($url, $data3));
+        $data['le7_male'] = (array)json_decode($this->CallAPI($url, $data1));
+        $data['le7_female'] = (array)json_decode($this->CallAPI($url, $data2));
         $this->layout->view('reports/le7', $data);
     }
-    public function  CallAPI($url,$data)
+    public function  CallAPI($url, $data)
     {
 
         $url = sprintf("%s?%s", $url, http_build_query($data));
         $key = "X-API-Key:" . $this->config->item('key_api');
         $user = $this->config->item('user_api');
         $pass = $this->config->item('pass_api');
-        
+
         $ch =  curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -157,7 +161,8 @@ class Report extends CI_Controller
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 3);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array($key, "Content-Type:application/json", 'Accept: application/json'));
-      
+        error_reporting(E_ALL);
+        ini_set('display_errors', '1');
         $result = curl_exec($ch);
         //print_r($result);
         curl_close($ch);

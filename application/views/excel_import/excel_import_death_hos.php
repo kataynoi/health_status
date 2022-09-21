@@ -14,7 +14,7 @@
 
         <div class="panel panel-primary">
             <div class="panel-heading">
-                นำเข้าข้อมูลการตายจาก กยผ.
+                นำเข้าข้อมูลการตายจาก กยผ. Death_Hos
             </div>
             <div class="panel-body">
                 <form method="post" id="import_form" enctype="multipart/form-data">
@@ -50,7 +50,7 @@ $(document).ready(function() {
     $('#import_form').on('submit', function(event) {
         event.preventDefault();
         $.ajax({
-            url: "<?php echo site_url(); ?>/excel_import/import_death",
+            url: "<?php echo site_url(); ?>/excel_import/import_death_hos",
             method: "POST",
             data: new FormData(this),
             beforeSend: function() {

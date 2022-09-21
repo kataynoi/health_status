@@ -2,15 +2,11 @@
 
 /**
  * Report model
- *
- * @author  Mr.Satit Rianpit <rianpit@yahoo.com>
+ * @author  Mr.Dechachit Kaewmaung <rianpit@yahoo.com>
  * @copyright   MKHO <http://mkho.moph.go.th>
- *
  */
 class Reports_model extends CI_Model
 {
-    public $hospcode;
-    public $hserv;
 
     public function get_sql_report_disease($id)
     {
@@ -32,7 +28,7 @@ class Reports_model extends CI_Model
     {
 
         $provcode = $this->config->item('prov_code');
-        $table = "death_home_" . $provcode;
+        $table = "death_home";
 
         if ($ampur == '') {
             $where = " ";
@@ -68,7 +64,7 @@ class Reports_model extends CI_Model
     {
 
         $provcode = $this->config->item('prov_code');
-        $table = "birth_" . $provcode;;
+        $table = "birth";
 
         if ($ampur == '') {
             $where = " ";
@@ -86,7 +82,7 @@ class Reports_model extends CI_Model
         ,SUM(IF(a.sex=1,1,0)) as male 
         ,SUM(IF(a.sex=2,1,0)) as female  
         FROM " . $table . " a 
-        LEFT JOIN (SELECT * FROM campur WHERE changwatcode=44) d ON a.ampur = d.ampurcodefull
+        LEFT JOIN (SELECT * FROM campur WHERE changwatcode=" . $provcode . ") d ON a.ampur = d.ampurcodefull
         " . $join . " 
         WHERE 1=1 " . $where . "  AND LEFT(a.ampur,2) ='" . $this->config->item('prov_code') . "'
         AND BYEAR =" . $year . "
@@ -174,7 +170,7 @@ class Reports_model extends CI_Model
         return $rs;
     }
 
-    public function yll7($sex = 0,$provcode)
+    public function yll7($sex = 0, $provcode)
     {
 
         if ($sex == 1) {
@@ -185,7 +181,7 @@ class Reports_model extends CI_Model
             $sql_sex = "B";
         }
 
-     
+
         $sql = "SELECT
         z5_rp_yll_home2.n,
         z5_rp_yll_home2.prov,
@@ -199,16 +195,23 @@ class Reports_model extends CI_Model
         z5_rp_yll_home2
         WHERE
         #prov  4 = เขต   40 ขอนแก่น    44มหาสารคาม   45ร้อยเอ็ด  46กาฬสินธุ์
-        z5_rp_yll_home2.prov = '".$provcode."' AND
+        z5_rp_yll_home2.prov = '" . $provcode . "' AND
         # Sex B = ทั้งหมด,   F = หญิง  ,   M = ชาย
-        z5_rp_yll_home2.SEX = '".$sql_sex."'
+        z5_rp_yll_home2.SEX = '" . $sql_sex . "'
         ORDER BY
         z5_rp_yll_home2.y2020 DESC
         LIMIT 20 ";
-        
+
         $rs = $this->db->query($sql)->result();
         //echo $this->db->last_query();
         return $rs;
+    }
+    public function year_death_home($year)
+    {
+        $rs = $this->db
+            ->where('DYEAR', $year)
+            ->get('death_home')
+            ->result();
     }
 }
 /* End of file basic_model.php */

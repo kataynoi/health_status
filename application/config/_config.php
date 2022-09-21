@@ -26,7 +26,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].':8888/health_status';
 $config['site_name'] = 'ระบบงานสถานะสุขภาพ Mahasarakham';
 $config['prov_code'] = '44';
-//$config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/e_office';
+$config['year_ngob'] = '2565';
+$config['web_api'] = '';
+$config['user_api'] = '';
+$config['pass_api'] = '';
+$config['key_api'] = '';
 
 /*
 |--------------------------------------------------------------------------
