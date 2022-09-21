@@ -47,8 +47,8 @@ class Api_data extends REST_Controller
     }
     public function s_pop_sex_post(){
         
-        //$year_death= $this->input->get('year');
-        $r = $this->api->s_pop_sex();
+        $year= $this->input->get('year');
+        $r = $this->api->s_pop_sex($year);
         $this->response($r);
     }
 }

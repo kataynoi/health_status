@@ -8,14 +8,14 @@
 class Api_model extends CI_Model
 {
 
-    
+
     public function death_home($year)
     {
         $rs = $this->db
             ->where('DYEAR', $year)
             ->get('death_home')
             ->result();
-            return $rs;
+        return $rs;
     }
     public function death_home_count($year)
     {
@@ -23,7 +23,7 @@ class Api_model extends CI_Model
             ->where('DYEAR', $year)
             ->get('death_home')
             ->num_rows();
-            return $rs;
+        return $rs;
     }
     public function death_hos($year)
     {
@@ -31,7 +31,7 @@ class Api_model extends CI_Model
             ->where('DYEAR', $year)
             ->get('death_hos')
             ->result();
-            return $rs;
+        return $rs;
     }
     public function death_hos_count($year)
     {
@@ -39,7 +39,7 @@ class Api_model extends CI_Model
             ->where('DYEAR', $year)
             ->get('death_hos')
             ->num_rows();
-            return $rs;
+        return $rs;
     }
     public function birth($year)
     {
@@ -47,7 +47,7 @@ class Api_model extends CI_Model
             ->where('BYEAR', $year)
             ->get('birth')
             ->result();
-            return $rs;
+        return $rs;
     }
     public function birth_count($year)
     {
@@ -55,14 +55,15 @@ class Api_model extends CI_Model
             ->where('BYEAR', $year)
             ->get('birth')
             ->num_rows();
-            return $rs;
+        return $rs;
     }
-    public function s_pop_sex()
+    public function s_pop_sex($year)
     {
         $rs = $this->db
+            ->where('b_year', $year)
             ->get('s_pop_sex_age_moph')
             ->result();
-            return $rs;
+        return $rs;
     }
 }
 /* End of file basic_model.php */
