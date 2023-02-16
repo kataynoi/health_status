@@ -35,8 +35,8 @@ class User extends CI_Controller
 
     public function login()
     {
-        if ($this->session->userdata('asm_login')==1) {
-            redirect(site_url("runner"), 'refresh');
+        if ($this->session->userdata('prov_login')==1) {
+            redirect(site_url("health_status"), 'refresh');
            console_log('login'.$this->session->userdata('asm_login'));
         } else {
             $this->layout->view('user/login');
@@ -81,10 +81,7 @@ class User extends CI_Controller
 
         $rs = $this->user->get_userprofile($id);
         $data['office'] = $this->basic->sl_hospcode();
-        //$data['group'] = $this->basic->sl_group();
         $rs['fullname'] = $rs['prename'] . $rs['name'];
-        //$rs['hospname'] = get_hospital_name($rs['hospcode']);
-        //$rs['group_name'] = get_group_name($rs['group']);
         $data['employee_type'] = $this->basic->sl_employee_type();
         $data['user_profiles'] = $rs;
         $this->layout->view('user/user_profile', $data);
@@ -104,9 +101,8 @@ class User extends CI_Controller
         //echo $check_user;
             $rs = $this->user->do_auth($username, $password);
             if ($rs['id']) {
-                $rs['id'] = substr($username,8,5);
-                $rs['hospcode'] = substr($username,8,5);
-                $rs['asm_login'] = true;
+                $rs['prov'] = $rs['prov'];
+                $rs['prov_login'] = true;
                 $rs['fullname'] = $rs['name'];
                 $rs['user_level'] = 'admin';
                 $this->session->set_userdata($rs);

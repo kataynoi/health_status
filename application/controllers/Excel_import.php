@@ -10,7 +10,7 @@ class Excel_import extends CI_Controller
             redirect(site_url("user/login"));
         $this->load->model('excel_import_model');
         $this->load->library('excel');
-        $this->prov_code = $this->config->item('prov_code');
+        $this->prov_code = $this->session->userdata('prov') ;
     }
 
     function death_home()
@@ -25,6 +25,10 @@ class Excel_import extends CI_Controller
     function birth()
     {
         $this->layout->view('excel_import/excel_import_birth');
+    }
+    function call_fn()
+    {
+        $this->excel_import_model->update_d_death_home();
     }
 
     function import_death_home()

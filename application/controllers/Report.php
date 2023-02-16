@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 /**
- * @author  Mr.Dechachit Kaewmaung <rianpit@yahoo.com>
+ * @author  Mr.Dechachit Kaewmaung 
  * @copyright   MKHO <http://mkho.moph.go.th>
  */
 class Report extends CI_Controller
@@ -30,6 +30,7 @@ class Report extends CI_Controller
     }
     public function  death_disease($id = 1)
     {
+        $prov = $this->input->post('provcode');
         $ampur = $this->input->post('ampurcode');
         $tambon = $this->input->post('tamboncode');
         $year = $this->input->post('year_ngob');
@@ -43,15 +44,15 @@ class Report extends CI_Controller
         $disease = $sql_report['sql'];
 
         // echo "tambon".$tambon;
-        $data['amp'] = $this->basic->get_ampur_list('44');
-        // $this->load->model('log_model');
-        //$this->log_model->save_log_view($this->id, 'รายงาน กลุ่มเป้าหมายวัคซีน');
+        $data['prov'] = $this->basic->get_prov_list('07');
+        //$data['amp'] = $this->basic->get_ampur_list('44');
         $this->session->set_userdata('ampur', $ampur);
         $this->session->set_userdata('year_ngob', $year);
         $data['report'] = $this->crud->death_disease($ampur, $disease, $year);
 
 
         $this->layout->view('reports/death_disease', $data);
+        //$this->load->view('reports/death_disease', $data);
     }
     public function  birth()
     {

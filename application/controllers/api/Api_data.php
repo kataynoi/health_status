@@ -39,6 +39,12 @@ class Api_data extends REST_Controller
         $r = $this->api->death_hos_count($year_death);
         $this->response($r);
     }
+    public function birth_post(){
+        
+        $year_death= $this->input->get('year');
+        $r = $this->api->birth($year_death);
+        $this->response($r);
+    }
     public function birth_count_post(){
         
         $year_death= $this->input->get('year');

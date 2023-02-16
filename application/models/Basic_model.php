@@ -99,6 +99,14 @@ class Basic_model extends CI_Model
     }
 
 
+    public function get_prov_list($ket)
+    {
+        $rs = $this->db
+            ->where('zonecode', $ket)
+            ->get('cchangwat')
+            ->result();
+        return $rs;
+    }
     public function get_ampur_list($prov)
     {
         $rs = $this->db

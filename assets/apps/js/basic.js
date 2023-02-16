@@ -137,7 +137,7 @@ $(document).ready(function () {
     });
   };
 
-  $("#provcode").on("change", function () {
+  $("#sl_prov").on("change", function () {
     var provcode = $(this).val();
     basic.get_ampur_list(provcode);
   });

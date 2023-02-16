@@ -50,16 +50,53 @@ class Reports_model extends CI_Model
         LEFT JOIN (SELECT * FROM campur WHERE changwatcode=44) d ON LEFT(a.lccaattmm,4) = d.ampurcodefull
         " . $join . " 
         WHERE 1=1 " . $where . "  AND LEFT(a.lccaattmm,2) ='" . $this->config->item('prov_code') . "'
-        AND YEAR_NGOB =" . $year . " " . $disease . " 
+        AND a.N_YEAR =" . $year . " " . $disease . " 
         GROUP BY " . $group . ";
         ";
         //echo $sql;
         $rs = $this->db->query($sql)->result();
-        //echo $this->db->last_query();
+        //echo "<div style='padding-top: 200px;padding-right: 30px;padding-left: 80px'></div>".$this->db->last_query();
 
         return $rs;
     }
 
+    public function death_disease_r7($prov_code="",$ampur = '', $disease, $year)
+    {
+
+        $provcode = $this->config->item('prov_code');
+        $table = "death_home";
+        if($prov_code ==""){
+
+        }
+        else if ($ampur == '') {
+            $where = " ";
+            $group = " LEFT(a.lccaattmm,4)";
+            $select = "d.ampurname as name,e.all_sex as person_all,e.male as person_male,e.female as person_female";
+            $join = " LEFT JOIN (SELECT * FROM pop_ampur WHERE n_year= " . $year . " AND provcode=" . $provcode . ") e ON  d.ampurcodefull = e.ampurcode";
+        } else if ($ampur != '') {
+            $where = "AND d.ampurcodefull= '" . $ampur . "' ";
+            $group = " a.hospcode";
+            $select = "c.hosname as name,null as person_all,null as person_male,null as person_female";
+            $join = "";
+        }
+
+        $sql = "SELECT " . $select . ",count(a.PID) death_total
+        ,SUM(IF(a.sex=1,1,0)) as male 
+        ,SUM(IF(a.sex=2,1,0)) as female  
+        FROM " . $table . " a 
+        LEFT JOIN chospital c ON a.HOSPCODE = c.hoscode
+        LEFT JOIN (SELECT * FROM campur WHERE changwatcode=44) d ON LEFT(a.lccaattmm,4) = d.ampurcodefull
+        " . $join . " 
+        WHERE 1=1 " . $where . "  AND LEFT(a.lccaattmm,2) ='" . $this->config->item('prov_code') . "'
+        AND a.N_YEAR =" . $year . " " . $disease . " 
+        GROUP BY " . $group . ";
+        ";
+        //echo $sql;
+        $rs = $this->db->query($sql)->result();
+        echo "<div style='padding-top: 200px;padding-right: 30px;padding-left: 80px'></div>".$this->db->last_query();
+
+        return $rs;
+    }
     public function birth($ampur = '', $year)
     {
 
