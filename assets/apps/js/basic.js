@@ -94,16 +94,16 @@ $(document).ready(function () {
     });
   };
   basic.get_ampur_list = function (provcode) {
-    $("#ampcode").empty();
+    $("#sl_ampur").empty();
     basic.ajax.get_ampur_list(provcode, function (err, data) {
       if (err) {
-        $("#ampcode").append('<option value=""> ไม่มีอำเภอ </option>');
+        $("#sl_ampur").append('<option value=""> ไม่มีอำเภอ </option>');
       } else {
-        $("#ampcode").append('<option value=""> อำเภอทั้งหมด </option>');
+        $("#sl_ampur").append('<option value=""> อำเภอทั้งหมด </option>');
         _.each(data.rows, function (v) {
-          $("#ampcode").append(
+          $("#sl_ampur").append(
             '<option value="' +
-              v.ampurcode +
+              v.ampurcodefull +
               '">[' +
               v.ampurcode +
               "] " +

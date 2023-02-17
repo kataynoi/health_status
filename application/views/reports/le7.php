@@ -17,6 +17,26 @@
     <div class="panel-heading">
         อายุคาดเฉลี่ย LE (Life Expectancy) เมื่อแรกเกิด เขตสุขภาพที่ 7 รวม
     </div>
+    <div class="navbar navbar-default">
+        <form action="<?php echo site_url('report/le/') ?>" class="form-row" method="post">
+            <div class="row">
+                <div class="col col-mb-3">
+                    <select id="sl_prov" name="provcode" style="width: 200px;" class="form-control">
+                        <option value=""> จังหวัดทั้งหมด </option>
+                        <?php
+                        $sl_prov = $this->session->userdata("provcode");
+                        foreach ($prov as $v) {
+                            $sl_prov == $v->changwatcode ? $selected = 'selected ' : $selected = "";
+                            echo '<option value=' . $v->changwatcode . ' ' . $selected . '>' . $v->changwatname . '</option>';
+                        }
+                        ?>
+                    </select>
+                    <button type="submit" class="btn btn-primary" id="btn_audit1" data-name='btn_show'> <i class="fa fa-search" aria-hidden="true"></i> แสดง</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="panel-body">
         <table class="table table-striped">
             <thead>
@@ -37,34 +57,17 @@
             <tbody>
                 <?php
                 $n = 1;
-               // print_r($le7);
+                // print_r($le7);
                 foreach ($le7 as $r) {
-                    switch ($r->prov) {
-                        case '4':
-                            $provname = 'เขตสุขภาพที่ 7';
-                            break;
-                        case '40':
-                            $provname = 'ขอนแก่น';
-                            break;
-                        case '44':
-                            $provname = 'มหาสารคาม';
-                            break;
-                        case '45':
-                            $provname = 'ร้อยเอ็ด';
-                            break;
-                        case '46':
-                            $provname = 'กาฬสินธ์ุ';
-                            break;
-                    }
                     echo "<tr>";
                     echo "<td>$n</td>
-                    <td>$provname </td>
-                    <td>" . number_format($r->y2016, 4) . " </td>
-                    <td>" . number_format($r->y2017, 4) . " </td>
-                    <td>" . number_format($r->y2018, 4) . " </td>
-                    <td>" . number_format($r->y2019, 4) . " </td>
-                    <td>" . number_format($r->y2020, 4) . " </td>
-                    <td>" . number_format($r->y2021, 4) . " </td></tr>";
+                    <td>" . $r->name . " </td>
+                    <td>" . number_format($r->y2016?$r->y2016:0, 4) . " </td>
+                    <td>" . number_format($r->y2017?$r->y2017:0, 4) . " </td>
+                    <td>" . number_format($r->y2018?$r->y2018:0, 4) . " </td>
+                    <td>" . number_format($r->y2019?$r->y2019:0, 4) . " </td>
+                    <td>" . number_format($r->y2020?$r->y2020:0, 4) . " </td>
+                    <td>" . number_format($r->y2021?$r->y2021:0, 4) . " </td></tr>";
                     $n++;
                 }
 
@@ -102,32 +105,16 @@
                 <?php
                 $n = 1;
                 foreach ($le7_male as $r) {
-                    switch ($r->prov) {
-                        case '4':
-                            $provname = 'เขตสุขภาพที่ 7';
-                            break;
-                        case '40':
-                            $provname = 'ขอนแก่น';
-                            break;
-                        case '44':
-                            $provname = 'มหาสารคาม';
-                            break;
-                        case '45':
-                            $provname = 'ร้อยเอ็ด';
-                            break;
-                        case '46':
-                            $provname = 'กาฬสินธ์ุ';
-                            break;
-                    }
+
                     echo "<tr>";
                     echo "<td>$n</td>
-                    <td>$provname </td>
-                    <td>" . number_format($r->y2016, 4) . " </td>
-                    <td>" . number_format($r->y2017, 4) . " </td>
-                    <td>" . number_format($r->y2018, 4) . " </td>
-                    <td>" . number_format($r->y2019, 4) . " </td>
-                    <td>" . number_format($r->y2020, 4) . " </td>
-                    <td>" . number_format($r->y2021, 4) . " </td></tr>";
+                    <td>" . $r->name . " </td>
+                    <td>" . number_format($r->y2016?$r->y2016:0, 4) . " </td>
+                    <td>" . number_format($r->y2017?$r->y2017:0, 4) . " </td>
+                    <td>" . number_format($r->y2018?$r->y2018:0, 4) . " </td>
+                    <td>" . number_format($r->y2019?$r->y2019:0, 4) . " </td>
+                    <td>" . number_format($r->y2020?$r->y2020:0, 4) . " </td>
+                    <td>" . number_format($r->y2021?$r->y2021:0, 4) . " </td></tr>";
                     $n++;
                 }
 
@@ -166,32 +153,16 @@
                 $n = 1;
 
                 foreach ($le7_female as $r) {
-                    switch ($r->prov) {
-                        case '4':
-                            $provname = 'เขตสุขภาพที่ 7';
-                            break;
-                        case '40':
-                            $provname = 'ขอนแก่น';
-                            break;
-                        case '44':
-                            $provname = 'มหาสารคาม';
-                            break;
-                        case '45':
-                            $provname = 'ร้อยเอ็ด';
-                            break;
-                        case '46':
-                            $provname = 'กาฬสินธ์ุ';
-                            break;
-                    }
+
                     echo "<tr>";
                     echo "<td>$n</td>
-                    <td>$provname </td>
-                    <td>" . number_format($r->y2016, 4) . " </td>
-                    <td>" . number_format($r->y2017, 4) . " </td>
-                    <td>" . number_format($r->y2018, 4) . " </td>
-                    <td>" . number_format($r->y2019, 4) . " </td>
-                    <td>" . number_format($r->y2020, 4) . " </td>
-                    <td>" . number_format($r->y2021, 4) . " </td></tr>";
+                    <td>" . $r->name . " </td>
+                    <td>" . number_format($r->y2016?$r->y2016:0, 4) . " </td>
+                    <td>" . number_format($r->y2017?$r->y2017:0, 4) . " </td>
+                    <td>" . number_format($r->y2018?$r->y2018:0, 4) . " </td>
+                    <td>" . number_format($r->y2019?$r->y2019:0, 4) . " </td>
+                    <td>" . number_format($r->y2020?$r->y2020:0, 4) . " </td>
+                    <td>" . number_format($r->y2021?$r->y2021:0, 4) . " </td></tr>";
                     $n++;
                 }
 

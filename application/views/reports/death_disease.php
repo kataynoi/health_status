@@ -39,17 +39,23 @@
                         </select>
                     </div>
                     <div class="col col-mb-3">
-                        <select id="sl_ampurx" name="ampurcode" style="width: 200px;" class="form-control">
-                            <option value=""> อำเภอทั้งหมด </option>
+                        <select id="sl_prov" name="provcode" style="width: 200px;" class="form-control">
+                            <option value=""> จังหวัดทั้งหมด </option>
                             <?php
-                            $sl_amp = $this->session->userdata("ampur");
-                            foreach ($amp as $v) {
-                                $sl_amp == $v->ampurcodefull ? $selected = 'selected ' : $selected = "";
-                                echo '<option value=' . $v->ampurcodefull . ' ' . $selected . '>' . $v->ampurname . '</option>';
+                            $sl_prov = $this->session->userdata("provcode");
+                            foreach ($prov as $v) {
+                                $sl_prov == $v->changwatcode ? $selected = 'selected ' : $selected = "";
+                                echo '<option value=' . $v->changwatcode . ' ' . $selected . '>' . $v->changwatname . '</option>';
                             }
                             ?>
                         </select>
                     </div>
+                    <div class="col col-mb-3">
+                        <select id="sl_ampur" name="ampurcode" style="width: 200px;" class="form-control">
+                            
+                        </select>
+                    </div>
+
                     <div class="col col-mb-2">
                         <button type="submit" class="btn btn-primary" id="btn_audit1" data-name='btn_show'> <i class="fa fa-search" aria-hidden="true"></i> แสดง</button>
                     </div>
@@ -147,5 +153,3 @@
 
     </div>
 </div>
-
-<script src="<?php echo base_url() ?>assets/apps/js/basic.js" charset="utf-8"></script>

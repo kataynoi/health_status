@@ -13,7 +13,7 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script src="<?php echo base_url() ?>js/jquery.min.js" charset="utf-8"></script>
     <script src="<?php echo base_url() ?>js/jquery.blockUI.js"></script>
-    <script src="<?php echo base_url() ?>js/jquery.maskedinput.min.js"></script>
+    <script src="<?php echo base_url() ?>js/jquery.maskedinput.min.js"></scriptbasic>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="<?php echo base_url()?>js/jquery.numeric.js"></script>
     <script src="<?php echo base_url()?>assets/apps/js/apps.js"></script>
