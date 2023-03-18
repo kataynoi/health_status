@@ -45,7 +45,7 @@
                     <th rowspan="2">#</th>
                     <th rowspan="2">ชื่อโรคภาษาอังกฤษ</th>
                     <th rowspan="2">ชื่อโรคภาษาไทย</th>
-                    <th colspan="5" class="text-center">(Year Life Loss, YLL)</th>
+                    <th colspan="6" class="text-center">(Year Life Loss, YLL)</th>
                 </tr>
                 <tr>
                     
@@ -53,6 +53,8 @@
                     <th>2562</th>
                     <th>2563</th>
                     <th>2564</th>
+                    <th>2565</th>
+                </tr>
                 </tr>
             </thead>
             <tbody>
@@ -84,7 +86,8 @@
                     <td>" . number_format($r->y2018, 2) . " </td>
                     <td>" . number_format($r->y2019, 2) . " </td>
                     <td>" . number_format($r->y2020, 2) . " </td>
-                    <td>" . number_format($r->y2021, 2) . " </td></tr>";
+                    <td>" . number_format($r->y2021, 2) . " </td>
+                    <td>" . number_format($r->y2022, 2) . " </td></tr>";
                     $n++;
                 }
 
@@ -117,6 +120,7 @@
                     <th>2562</th>
                     <th>2563</th>
                     <th>2564</th>
+                    <th>2565</th>
                 </tr>
                 </tr>
             </thead>
@@ -149,7 +153,8 @@
                     <td>" . number_format($r->y2018, 2) . " </td>
                     <td>" . number_format($r->y2019, 2) . " </td>
                     <td>" . number_format($r->y2020, 2) . " </td>
-                    <td>" . number_format($r->y2021, 2) . " </td></tr>";
+                    <td>" . number_format($r->y2021, 2) . " </td>
+                    <td>" . number_format($r->y2022, 2) . " </td></tr>";
                     $n++;
                 }
 
@@ -182,6 +187,7 @@
                     <th>2562</th>
                     <th>2563</th>
                     <th>2564</th>
+                    <th>2565</th>
                 </tr>
             </thead>
             <tbody>
@@ -213,7 +219,8 @@
                     <td>" . number_format($r->y2018, 2) . " </td>
                     <td>" . number_format($r->y2019, 2) . " </td>
                     <td>" . number_format($r->y2020, 2) . " </td>
-                    <td>" . number_format($r->y2021, 2) . " </td></tr>";
+                    <td>" . number_format($r->y2021, 2) . " </td>
+                    <td>" . number_format($r->y2022, 2) . " </td></tr>";
                     $n++;
                 }
 
