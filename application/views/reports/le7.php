@@ -20,7 +20,7 @@
     <div class="navbar navbar-default">
         <form action="<?php echo site_url('report/le/') ?>" class="form-row" method="post">
             <div class="row">
-                <div class="col col-mb-3">
+                <div class="col col-mb-3 input-group">
                     <select id="sl_prov" name="provcode" style="width: 200px;" class="form-control">
                         <option value=""> จังหวัดทั้งหมด </option>
                         <?php
@@ -31,7 +31,9 @@
                         }
                         ?>
                     </select>
-                    <button type="submit" class="btn btn-primary" id="btn_audit1" data-name='btn_show'> <i class="fa fa-search" aria-hidden="true"></i> แสดง</button>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary" id="btn_audit1" data-name='btn_show'> <i class="fa fa-search" aria-hidden="true"></i> แสดง</button>
+                    </div>
 
                 </div>
             </div>
@@ -62,14 +64,14 @@
                 foreach ($le7 as $r) {
                     echo "<tr>";
                     echo "<td>$n</td>
-                    <td>" . $r->name . " </td>
-                    <td>" . number_format($r->y2016?$r->y2016:0, 4) . " </td>
-                    <td>" . number_format($r->y2017?$r->y2017:0, 4) . " </td>
-                    <td>" . number_format($r->y2018?$r->y2018:0, 4) . " </td>
-                    <td>" . number_format($r->y2019?$r->y2019:0, 4) . " </td>
-                    <td>" . number_format($r->y2020?$r->y2020:0, 4) . " </td>
-                    <td>" . number_format($r->y2021?$r->y2021:0, 4) . " </td>
-                    <td>" . number_format($r->y2022?$r->y2022:0, 4) . " </td></tr>";
+                    <td>" . ($r->prov != '4' ? $r->name : 'เขตสุขภาพที่ 7') . "</td>
+                    <td>" . number_format($r->y2016 ? $r->y2016 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2017 ? $r->y2017 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2018 ? $r->y2018 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2019 ? $r->y2019 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2020 ? $r->y2020 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2021 ? $r->y2021 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2022 ? $r->y2022 : 0, 4) . " </td></tr>";
                     $n++;
                 }
 
@@ -111,14 +113,14 @@
 
                     echo "<tr>";
                     echo "<td>$n</td>
-                    <td>" . $r->name . " </td>
-                    <td>" . number_format($r->y2016?$r->y2016:0, 4) . " </td>
-                    <td>" . number_format($r->y2017?$r->y2017:0, 4) . " </td>
-                    <td>" . number_format($r->y2018?$r->y2018:0, 4) . " </td>
-                    <td>" . number_format($r->y2019?$r->y2019:0, 4) . " </td>
-                    <td>" . number_format($r->y2020?$r->y2020:0, 4) . " </td>
-                    <td>" . number_format($r->y2021?$r->y2021:0, 4) . " </td>
-                    <td>" . number_format($r->y2022?$r->y2022:0, 4) . " </td></tr>";
+                    <td>" . ($r->prov != '4' ? $r->name : 'เขตสุขภาพที่ 7') . "</td>
+                    <td>" . number_format($r->y2016 ? $r->y2016 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2017 ? $r->y2017 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2018 ? $r->y2018 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2019 ? $r->y2019 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2020 ? $r->y2020 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2021 ? $r->y2021 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2022 ? $r->y2022 : 0, 4) . " </td></tr>";
                     $n++;
                 }
 
@@ -161,14 +163,14 @@
 
                     echo "<tr>";
                     echo "<td>$n</td>
-                    <td>" . $r->name . " </td>
-                    <td>" . number_format($r->y2016?$r->y2016:0, 4) . " </td>
-                    <td>" . number_format($r->y2017?$r->y2017:0, 4) . " </td>
-                    <td>" . number_format($r->y2018?$r->y2018:0, 4) . " </td>
-                    <td>" . number_format($r->y2019?$r->y2019:0, 4) . " </td>
-                    <td>" . number_format($r->y2020?$r->y2020:0, 4) . " </td>
-                    <td>" . number_format($r->y2021?$r->y2021:0, 4) . " </td>
-                    <td>" . number_format($r->y2022?$r->y2022:0, 4) . " </td></tr>";
+                    <td>" . ($r->prov != '4' ? $r->name : 'เขตสุขภาพที่ 7') . "</td>
+                    <td>" . number_format($r->y2016 ? $r->y2016 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2017 ? $r->y2017 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2018 ? $r->y2018 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2019 ? $r->y2019 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2020 ? $r->y2020 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2021 ? $r->y2021 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2022 ? $r->y2022 : 0, 4) . " </td></tr>";
                     $n++;
                 }
 

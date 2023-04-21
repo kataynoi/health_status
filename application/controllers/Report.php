@@ -31,9 +31,9 @@ class Report extends CI_Controller
     public function  death_disease($id = 1)
     {
         $prov = $this->input->post('provcode');
-        
+
         $ampur = $this->input->post('ampurcode');
-        
+
         $tambon = $this->input->post('tamboncode');
         $year = $this->input->post('year_ngob');
         if (!isset($year)) {
@@ -48,10 +48,10 @@ class Report extends CI_Controller
         // echo "tambon".$tambon;
         $data['prov'] = $this->basic->get_prov_list('07');
         $data['amp'] = $this->basic->get_ampur_list('44');
-        $this->session->set_userdata('provcode',$prov);
-        $this->session->set_userdata('ampurcode',$ampur);
+        $this->session->set_userdata('provcode', $prov);
+        $this->session->set_userdata('ampurcode', $ampur);
         $this->session->set_userdata('year_ngob', $year);
-        $data['report'] = $this->crud->death_disease($prov,$ampur, $disease, $year);
+        $data['report'] = $this->crud->death_disease($prov, $ampur, $disease, $year);
 
 
         $this->layout->view('reports/death_disease', $data);
@@ -75,14 +75,29 @@ class Report extends CI_Controller
 
         $this->layout->view('reports/birth', $data);
     }
-
+    public function le()
+    {
+        $data['prov'] = $this->basic->get_prov_list('07');
+        //$provcode = $this->input->post('provcode');
+        $url = $this->config->item('web_api') . "/reports/le";
+        $provcode = $this->input->post('provcode');
+        $data1 = array("sex" => "1", "provcode" => $provcode);
+        $data2 = array("sex" => "2", "provcode" => $provcode);
+        $data3 = array("sex" => "3", "provcode" => $provcode);
+        $data['le7'] = (array)json_decode($this->CallAPI($url, $data3));
+        $data['le7_male'] = (array)json_decode($this->CallAPI($url, $data1));
+        $data['le7_female'] = (array)json_decode($this->CallAPI($url, $data2));
+        $this->layout->view('reports/le7', $data);
+        //$this->load->view('reports/le7', $data);
+    }
     public function  hale()
     {
         $url = $this->config->item('web_api') . "/reports/hale";
-
-        $data1 = array("sex" => "1");
-        $data2 = array("sex" => "2");
-        $data3 = array("sex" => "3");
+        $data['prov'] = $this->basic->get_prov_list('07');
+        $provcode = $this->input->post('provcode');
+        $data1 = array("sex" => "1", "provcode" => $provcode);
+        $data2 = array("sex" => "2", "provcode" => $provcode);
+        $data3 = array("sex" => "3", "provcode" => $provcode);
         $data['hale7'] = (array)json_decode($this->CallAPI($url, $data3));
         $data['hale7_male'] = (array)json_decode($this->CallAPI($url, $data1));
         $data['hale7_female'] = (array)json_decode($this->CallAPI($url, $data2));
@@ -98,7 +113,6 @@ class Report extends CI_Controller
         }
         $this->session->set_userdata('prov_code', $prov_code);
         $url = $this->config->item('web_api') . "/reports/yll";
-
         $data1 = array("sex" => "1", "prov" => $prov_code);
         $data2 = array("sex" => "2", "prov" => $prov_code);
         $data3 = array("sex" => "3", "prov" => $prov_code);
@@ -132,21 +146,7 @@ class Report extends CI_Controller
         $this->layout->view('reports/group_disease_stat', $data);
     }
 
-    public function le()
-    {
-        $data['prov'] = $this->basic->get_prov_list('07');
-        //$provcode = $this->input->post('provcode');
-        $url = $this->config->item('web_api') . "/reports/le";
-        $provcode=$this->input->post('provcode');
-        $data1 = array("sex" => "1","provcode" => $provcode);
-        $data2 = array("sex" => "2","provcode" => $provcode);
-        $data3 = array("sex" => "3","provcode" => $provcode);
-        $data['le7'] = (array)json_decode($this->CallAPI($url, $data3));
-        $data['le7_male'] = (array)json_decode($this->CallAPI($url, $data1));
-        $data['le7_female'] = (array)json_decode($this->CallAPI($url, $data2));
-        $this->layout->view('reports/le7', $data);
-        //$this->load->view('reports/le7', $data);
-    }
+
     public function  CallAPI($url, $data)
     {
 
@@ -171,7 +171,7 @@ class Report extends CI_Controller
         error_reporting(E_ALL);
         ini_set('display_errors', '1');
         $result = curl_exec($ch);
-        //print_r($result);
+        console_log($result);
         curl_close($ch);
         return $result;
     }
