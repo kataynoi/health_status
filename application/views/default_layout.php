@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ระบบงานสถานะสุขภาพ Mahasarakham<?php echo $this->session->userdata('fullname');?></title>
+    <title>ระบบงานสถานะสุขภาพ R7<?php echo $this->session->userdata('fullname');?></title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
