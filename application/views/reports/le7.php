@@ -21,7 +21,7 @@
         <form action="<?php echo site_url('report/le/') ?>" class="form-row" method="post">
             <div class="row">
                 <div class="col col-mb-3 input-group">
-                    <select id="sl_prov" name="provcode" style="width: 200px;" class="form-control">
+                    <select id="sl_provx" name="provcode" style="width: 200px;" class="form-control">
                         <option value=""> จังหวัดทั้งหมด </option>
                         <?php
                         $sl_prov = $this->session->userdata("provcode");

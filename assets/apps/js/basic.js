@@ -94,6 +94,7 @@ $(document).ready(function () {
     });
   };
   basic.get_ampur_list = function (provcode) {
+  
     $("#sl_ampur").empty();
     basic.ajax.get_ampur_list(provcode, function (err, data) {
       if (err) {
@@ -101,6 +102,7 @@ $(document).ready(function () {
       } else {
         $("#sl_ampur").append('<option value=""> อำเภอทั้งหมด </option>');
         _.each(data.rows, function (v) {
+    
           $("#sl_ampur").append(
             '<option value="' +
               v.ampurcodefull +

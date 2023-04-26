@@ -108,14 +108,17 @@ class Report extends CI_Controller
     {
 
         $prov_code = $this->input->post('prov_code');
+        $amp_code = $this->input->post('amp_code');
         if ($prov_code == '') {
             $prov_code = $this->config->item('prov_code');
         }
         $this->session->set_userdata('prov_code', $prov_code);
+        $this->session->set_userdata('amp_code', $amp_code);
+        $data['amp'] = $this->basic->get_ampur_list($prov_code);
         $url = $this->config->item('web_api') . "/reports/yll";
-        $data1 = array("sex" => "1", "prov" => $prov_code);
-        $data2 = array("sex" => "2", "prov" => $prov_code);
-        $data3 = array("sex" => "3", "prov" => $prov_code);
+        $data1 = array("sex" => "1", "prov" => $prov_code, "amp" => $amp_code);
+        $data2 = array("sex" => "2", "prov" => $prov_code, "amp" => $amp_code);
+        $data3 = array("sex" => "3", "prov" => $prov_code, "amp" => $amp_code);
 
         $data['yll7'] = (array)json_decode($this->CallAPI($url, $data3));
         $data['yll7_male'] = (array)json_decode($this->CallAPI($url, $data1));
@@ -171,7 +174,7 @@ class Report extends CI_Controller
         error_reporting(E_ALL);
         ini_set('display_errors', '1');
         $result = curl_exec($ch);
-        console_log($result);
+        //console_log($result);
         curl_close($ch);
         return $result;
     }

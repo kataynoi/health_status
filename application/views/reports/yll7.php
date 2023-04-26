@@ -1,6 +1,5 @@
 <br>
 <br>
-
 <script>
     $('#left_menu').hide();
     $('[data-toggle="tooltip"]').tooltip();
@@ -13,9 +12,10 @@
         margin-left: 0px;
     }
 </style>
+<?php $ampurName = get_ampur_name($this->session->userdata('amp_code'));?>
 <div class="panel panel-info">
     <div class="panel-heading">
-    ปีที่สูญเสียจากการตายก่อนวัยอันควร (Year Life Loss, YLL)  รวม
+    ปีที่สูญเสียจากการตายก่อนวัยอันควร (Year Life Loss, YLL)  รวม <?php echo $ampurName?>
     </div>
 
     <div class="panel-body">
@@ -24,7 +24,7 @@
             <form action="<?php echo site_url('report/yll7/') ?>" class="form-row" method="post">
                 <div class="row">
                     <div class="col col-mb-3">
-                        <select id="prov_code" name="prov_code" style="width: 200px;" class="form-control">
+                        <select id="sl_prov" name="prov_code" style="width: 200px;" class="form-control">
                             <option value="4" <?php echo $this->session->userdata('prov_code')==4 ? 'selected':'';?>>เขตสุขภาพที่ 7</option>
                             <option value="40" <?php echo $this->session->userdata('prov_code')==40 ? 'selected':'';?>>ขอนแก่น</option>
                             <option value="44" <?php echo $this->session->userdata('prov_code')==44 ? 'selected':'';?>>มหาสารคาม</option>
@@ -32,6 +32,16 @@
                             <option value="46" <?php echo $this->session->userdata('prov_code')==46 ? 'selected':'';?>>กาฬสินธุ์</option>
                         </select>
                     </div>
+                    <select id="sl_ampur" name="amp_code" style="width: 200px;" class="form-control">
+                    <option value=""> อำเภอทั้งหมด </option>
+                            <?php
+                            $sl_amp = $this->session->userdata("amp_code");
+                            foreach ($amp as $v) {
+                                $sl_amp == $v->ampurcodefull ? $selected = 'selected ' : $selected = "";
+                                echo '<option value=' . $v->ampurcodefull . ' ' . $selected . '>['.$v->ampurcode.'] ' . $v->ampurname . '</option>';
+                            }
+                            ?>
+                    </select>
                     <div class="col col-mb-2">
                         <button type="submit" class="btn btn-primary" id="btn_audit1" data-name='btn_show'> <i class="fa fa-search" aria-hidden="true"></i> แสดง</button>
                     </div>
@@ -62,23 +72,6 @@
                 $n = 1;
 
                 foreach ($yll7 as $r) {
-                    switch ($r->prov) {
-                        case '4':
-                            $provname = 'เขตสุขภาพที่ 7';
-                            break;
-                        case '40':
-                            $provname = 'ขอนแก่น';
-                            break;
-                        case '44':
-                            $provname = 'มหาสารคาม';
-                            break;
-                        case '45':
-                            $provname = 'ร้อยเอ็ด';
-                            break;
-                        case '46':
-                            $provname = 'กาฬสินธ์ุ';
-                            break;
-                    }
                     echo "<tr>";
                     echo "<td>$n</td>
                     <td>$r->gr_disease </td>
@@ -102,7 +95,7 @@
 
 <div class="panel panel-info">
     <div class="panel-heading">
-    ปีที่สูญเสียจากการตายก่อนวัยอันควร (Year Life Loss, YLL)  ชาย
+    ปีที่สูญเสียจากการตายก่อนวัยอันควร (Year Life Loss, YLL)  ชาย <?php echo $ampurName?>
     </div>
 
     <div class="panel-body">
@@ -129,23 +122,6 @@
                 $n = 1;
 
                 foreach ($yll7_male as $r) {
-                    switch ($r->prov) {
-                        case '4':
-                            $provname = 'เขตสุขภาพที่ 7';
-                            break;
-                        case '40':
-                            $provname = 'ขอนแก่น';
-                            break;
-                        case '44':
-                            $provname = 'มหาสารคาม';
-                            break;
-                        case '45':
-                            $provname = 'ร้อยเอ็ด';
-                            break;
-                        case '46':
-                            $provname = 'กาฬสินธ์ุ';
-                            break;
-                    }
                     echo "<tr>";
                     echo "<td>$n</td>
                     <td>$r->gr_disease </td>
@@ -169,7 +145,7 @@
 
 <div class="panel panel-info">
     <div class="panel-heading">
-    ปีที่สูญเสียจากการตายก่อนวัยอันควร (Year Life Loss, YLL) หญิง
+    ปีที่สูญเสียจากการตายก่อนวัยอันควร (Year Life Loss, YLL) หญิง <?php echo $ampurName?>
     </div>
 
     <div class="panel-body">
@@ -195,23 +171,6 @@
                 $n = 1;
 
                 foreach ($yll7_female as $r) {
-                    switch ($r->prov) {
-                        case '4':
-                            $provname = 'เขตสุขภาพที่ 7';
-                            break;
-                        case '40':
-                            $provname = 'ขอนแก่น';
-                            break;
-                        case '44':
-                            $provname = 'มหาสารคาม';
-                            break;
-                        case '45':
-                            $provname = 'ร้อยเอ็ด';
-                            break;
-                        case '46':
-                            $provname = 'กาฬสินธ์ุ';
-                            break;
-                    }
                     echo "<tr>";
                     echo "<td>$n</td>
                     <td>$r->gr_disease </td>
@@ -231,5 +190,8 @@
         <hr class="hr">
     </div>
 </div>
-
 <script src="<?php echo base_url() ?>assets/apps/js/basic.js" charset="utf-8"></script>
+<script> var amp_code = '<?php echo $this->session->userdata('amp_code') ?>';
+var prov_code = $('#sl_prov').val();
+if(prov_code!=''){}
+</script>

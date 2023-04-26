@@ -45,7 +45,7 @@
                             $sl_amp = $this->session->userdata("ampur");
                             foreach ($amp as $v) {
                                 $sl_amp == $v->ampurcodefull ? $selected = 'selected ' : $selected = "";
-                                echo '<option value=' . $v->ampurcodefull . ' ' . $selected . '>' . $v->ampurname . '</option>';
+                                echo '<option value=' . $v->ampurcodefull . ' ' . $selected . '>['.$v->ampurcode.']' . $v->ampurname . '</option>';
                             }
                             ?>
                         </select>

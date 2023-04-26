@@ -67,7 +67,7 @@ class Basic_model extends CI_Model
             ->get('campur')
             ->row();
 
-        return count($rs) > 0 ? $rs->ampurname : '-';
+        return count($rs) > 0 ? $rs->ampurname : '';
     }
 
     public function get_ampur_name_ampcode($amp)
