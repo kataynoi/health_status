@@ -107,122 +107,37 @@ class Reports_model extends CI_Model
     }
 
 
-    public function le7($sex = 0)
-    {
 
-        if ($sex == 1) {
-            $sql_sex = "AND sex = '1'";
-        } else if ($sex == 2) {
-            $sql_sex = "AND sex = '2'";
-        } else {
-            $sql_sex = "AND sex = '3'";
-        }
-
-        $provcode = $this->config->item('prov_code');
-        $sql = "SELECT
-        rp_le_home_r7.prov,
-        rp_le_home_r7.`no`,
-        rp_le_home_r7.age_gr,
-        rp_le_home_r7.sex,
-        rp_le_home_r7.y2016,
-        rp_le_home_r7.y2017,
-        rp_le_home_r7.y2018,
-        rp_le_home_r7.y2019,
-        rp_le_home_r7.y2020
-        FROM
-        rp_le_home_r7
-        WHERE 
-        # 4 = 'เขตสุขภาพที่  7 ,   40  = ขอนแก่น  ,  44  =  มหาสารคาม ,  45  = ร้อยเอ็ด ,  46  = กาฬสินธุ์  
-        #Prov = '4' AND 
-        # no = อายุเมื่อแรกเกิด
-        no = '1' 
-        # เพศ   1  = ชาย   2  = หญิง   3  = รวม
-        " . $sql_sex;
-        //echo $sql;
-        $rs = $this->db->query($sql)->result();
-        //echo $this->db->last_query();
-        return $rs;
-    }
-
-    public function hale7($sex = 0)
-    {
-
-        if ($sex == 1) {
-            $sql_sex = "AND sex = '1'";
-        } else if ($sex == 2) {
-            $sql_sex = "AND sex = '2'";
-        } else {
-            $sql_sex = "AND sex = '3'";
-        }
-
-        $provcode = $this->config->item('prov_code');
-        $sql = "SELECT
-        rp_hale_home_r7.prov,
-        rp_hale_home_r7.`no`,
-        rp_hale_home_r7.age_gr,
-        rp_hale_home_r7.sex,
-        rp_hale_home_r7.y2016,
-        rp_hale_home_r7.y2017,
-        rp_hale_home_r7.y2018,
-        rp_hale_home_r7.y2019,
-        rp_hale_home_r7.y2020
-        FROM
-        rp_hale_home_r7
-        WHERE 
-        # 4 = 'เขตสุขภาพที่  7 ,   40  = ขอนแก่น  ,  44  =  มหาสารคาม ,  45  = ร้อยเอ็ด ,  46  = กาฬสินธุ์  
-        #Prov = '4' AND 
-        # no = อายุเมื่อแรกเกิด
-        no = '1' 
-        # เพศ   1  = ชาย   2  = หญิง   3  = รวม
-        " . $sql_sex;
-        //echo $sql;
-        $rs = $this->db->query($sql)->result();
-        //echo $this->db->last_query();
-        return $rs;
-    }
-
-    public function yll7($sex = 0, $provcode)
-    {
-
-        if ($sex == 1) {
-            $sql_sex = "M";
-        } else if ($sex == 2) {
-            $sql_sex = "F";
-        } else {
-            $sql_sex = "B";
-        }
-
-
-        $sql = "SELECT
-        z5_rp_yll_home2.n,
-        z5_rp_yll_home2.prov,
-        z5_rp_yll_home2.SEX,
-        z5_rp_yll_home2.gr_disease,
-        z5_rp_yll_home2.gr_diseaseTH,
-        z5_rp_yll_home2.y2018,
-        z5_rp_yll_home2.y2019,
-        z5_rp_yll_home2.y2020
-        FROM
-        z5_rp_yll_home2
-        WHERE
-        #prov  4 = เขต   40 ขอนแก่น    44มหาสารคาม   45ร้อยเอ็ด  46กาฬสินธุ์
-        z5_rp_yll_home2.prov = '" . $provcode . "' AND
-        # Sex B = ทั้งหมด,   F = หญิง  ,   M = ชาย
-        z5_rp_yll_home2.SEX = '" . $sql_sex . "'
-        ORDER BY
-        z5_rp_yll_home2.y2020 DESC
-        LIMIT 20 ";
-
-        $rs = $this->db->query($sql)->result();
-        //echo $this->db->last_query();
-        return $rs;
-    }
     public function year_death_home($year)
     {
         $rs = $this->db
             ->where('DYEAR', $year)
             ->get('death_home')
             ->result();
+    }
+    public function deathInMonth($prov)
+    {
+
+        $sql ="SELECT DATE_FORMAT(a.D_DEATH,'%Y') as n_year,COUNT(PID) as total
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='01',1,0)) as M01
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='02',1,0)) as M02
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='03',1,0)) as M03
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='04',1,0)) as M04
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='05',1,0)) as M05
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='06',1,0)) as M06
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='07',1,0)) as M07
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='08',1,0)) as M08
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='09',1,0)) as M09
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='10',1,0)) as M10
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='11',1,0)) as M11
+        ,SUM(IF(DATE_FORMAT(a.D_DEATH,'%m')='12',1,0)) as M12
+        
+        FROM death_home a 
+        WHERE a.PROV='".$prov."' 
+        GROUP BY DATE_FORMAT(a.D_DEATH,'%Y') ORDER BY DATE_FORMAT(a.D_DEATH,'%Y') DESC";
+        $rs = $this->db->query($sql)->result();
+       // echo $this->db->last_query();
+        return $rs;
     }
 }
 /* End of file basic_model.php */

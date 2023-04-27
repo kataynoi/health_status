@@ -57,6 +57,16 @@ class Report extends CI_Controller
         $this->layout->view('reports/death_disease', $data);
         //$this->load->view('reports/death_disease', $data);
     }
+
+    public function  deathInMonth()
+    {
+        $prov = $this->session->userdata('prov');
+
+        $data['report'] = $this->crud->deathInMonth($prov);
+
+        $this->layout->view('reports/deathInMonth', $data);
+        //$this->load->view('reports/deathInMonth', $data);
+    }
     public function  birth()
     {
         $ampur = $this->input->post('ampurcode');

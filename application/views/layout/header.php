@@ -19,7 +19,9 @@
                             <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/death_home'); ?>">นำเข้าข้อมูลการตาย [HOME] กยผ. </a></li>
                             <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/death_hos'); ?>">นำเข้าข้อมูลการตาย [HOSPITAL] กยผ. </a></li>
                             <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/birth'); ?>">นำเข้าข้อมูลการเกิด กยผ. </a></li>
-
+                            <li class="divider"></li>
+                            <li><a class="dropdown-item" href="<?php echo site_url('/report/deathInMonth'); ?>">ข้อมูลการตายรายเดือน</a></li>
+                     
                         </ul>
                         </i>
                     </li>
