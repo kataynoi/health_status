@@ -1,18 +1,6 @@
 <br>
 <br>
 
-<script>
-    $('#left_menu').hide();
-    $('[data-toggle="tooltip"]').tooltip();
-    $('#btn-28').on('click', function() {
-        alert('OK');
-    });
-</script>
-<style>
-    #page-wrapper {
-        margin-left: 0px;
-    }
-</style>
 <div class="panel panel-info">
     <div class="panel-heading">
         <?php echo $report_name ?>
@@ -34,7 +22,6 @@
                                 }
                                 echo '<option value=' . $i . ' ' . $selected . '>' . $i . '</option>';
                             }
-
                             ?>
                         </select>
                     </div>

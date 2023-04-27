@@ -35,7 +35,7 @@ class Reports_model extends CI_Model
             $group = " LEFT(a.lccaattmm,2)";
             $select = "d.changwatname as name,e.all_sex as person_all,e.male as person_male,e.female as person_female";
             $join =" LEFT JOIN ( SELECT * FROM cchangwat WHERE zonecode = 07) d ON LEFT (a.lccaattmm, 2) = d.changwatcode";
-            $join .= " LEFT JOIN ( SELECT provcode,sum(male) as male, sum(female) as female, sum(all_sex) as all_sex FROM pop_ampur WHERE n_year = ".$year." ) e ON d.changwatcode = e.provcode";
+            $join .= " LEFT JOIN ( SELECT provcode,sum(male) as male, sum(female) as female, sum(all_sex) as all_sex FROM pop_ampur WHERE n_year = ".$year." group by provcode) e ON d.changwatcode = e.provcode";
         } 
         elseif($ampur == '' ) {
             $where = "  AND LEFT(a.lccaattmm,2) ='" . $prov . "'";
