@@ -1,18 +1,5 @@
 <br>
 <br>
-
-<script>
-    $('#left_menu').hide();
-    $('[data-toggle="tooltip"]').tooltip();
-    $('#btn-28').on('click', function() {
-        alert('OK');
-    });
-</script>
-<style>
-    #page-wrapper {
-        margin-left: 0px;
-    }
-</style>
 <div class="panel panel-info">
     <div class="panel-heading">
         อายุคาดเฉลี่ยสุขภาพดีเมื่อแรกเกิด (health adjusted life expectancy: HALE) เขตสุขภาพที่ 7 รวม
@@ -41,6 +28,7 @@
         </form>
     </div>
     <div class="panel-body">
+
         <table class="table table-striped">
             <thead>
                 <tr>

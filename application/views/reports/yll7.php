@@ -1,12 +1,5 @@
 <br>
 <br>
-<script>
-    $('#left_menu').hide();
-    $('[data-toggle="tooltip"]').tooltip();
-    $('#btn-28').on('click', function() {
-        alert('OK');
-    });
-</script>
 <style>
     #page-wrapper {
         margin-left: 0px;
