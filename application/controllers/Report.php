@@ -153,6 +153,7 @@ class Report extends CI_Controller
     public function  CallAPI($url, $data)
     {
 
+        console_log($data);
         $url = sprintf("%s?%s", $url, http_build_query($data));
         $key = "X-API-Key:" . $this->config->item('key_api');
         $user = $this->config->item('user_api');
@@ -174,7 +175,7 @@ class Report extends CI_Controller
         error_reporting(E_ALL);
         ini_set('display_errors', '1');
         $result = curl_exec($ch);
-        //console_log($result);
+        console_log($result);
         curl_close($ch);
         return $result;
     }
