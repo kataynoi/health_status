@@ -53,7 +53,7 @@ class Excel_import_model extends CI_Model
 	{
 		//$this->db->insert_batch('person_survey_test', $data);
 		$n = 0;
-		$table = 'birth_' . $prov_code;
+		$table = 'birth';
 		$rs = $this->db->where('BYEAR', $import_year)->delete($table);
 		$this->db->trans_start();
 		foreach ($items as $item) {

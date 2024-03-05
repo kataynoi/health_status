@@ -71,14 +71,19 @@ class Reports_model extends CI_Model
     }
 
     
-    public function birth($ampur = '', $year)
+    public function birth($prov='' ,$ampur = '', $year)
     {
 
         $provcode = $this->config->item('prov_code');
         $table = "birth";
-
-        if ($ampur == '') {
+        if ($prov == '') {
             $where = " ";
+            $group = " a.prov";
+            $select = "d.changwatname as name,e.all_sex as person_all,e.male as person_male,e.female as person_female";
+            $join =" LEFT JOIN ( SELECT * FROM cchangwat WHERE zonecode = 07) d ON a.prov = d.changwatcode";
+            $join .= " LEFT JOIN (SELECT * FROM pop_ampur WHERE n_year= " . $year . " AND provcode=" . $provcode . ") e ON  d.changwatcode = e.provcode";
+        } else if ($ampur == '') {
+            $where = "a.prov='".$prov."'";
             $group = " a.ampur";
             $select = "d.ampurname as name,e.all_sex as person_all,e.male as person_male,e.female as person_female";
             $join = " LEFT JOIN (SELECT * FROM pop_ampur WHERE n_year= " . $year . " AND provcode=" . $provcode . ") e ON  d.ampurcodefull = e.ampurcode";
@@ -93,13 +98,12 @@ class Reports_model extends CI_Model
         ,SUM(IF(a.sex=1,1,0)) as male 
         ,SUM(IF(a.sex=2,1,0)) as female  
         FROM " . $table . " a 
-        LEFT JOIN (SELECT * FROM campur WHERE changwatcode=" . $provcode . ") d ON a.ampur = d.ampurcodefull
         " . $join . " 
-        WHERE 1=1 " . $where . "  AND LEFT(a.ampur,2) ='" . $this->config->item('prov_code') . "'
+        WHERE 1=1 " . $where . "
         AND BYEAR =" . $year . "
         GROUP BY " . $group . ";
         ";
-        //echo $sql;
+        echo $sql;
         $rs = $this->db->query($sql)->result();
         //echo $this->db->last_query();
 

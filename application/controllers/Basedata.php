@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @author  Mr.Dechachit Kaewmaung 
  * @copyright   MKHO <http://mkho.moph.go.th>
  */
-class Report extends CI_Controller
+class Basedata extends CI_Controller
 {
     public $user_id;
     public $id;
@@ -14,7 +14,7 @@ class Report extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Basic_model', 'basic');
-        $this->load->model('Reports_model', 'crud');
+        $this->load->model('Report_model', 'crud');
         $this->id = $this->session->userdata('id');
     }
 
@@ -81,7 +81,7 @@ class Report extends CI_Controller
         $data['report'] = $this->crud->birth($prov, $ampur, $year);
 
 
-        // $this->layout->view('reports/birth', $data);
+       // $this->layout->view('reports/birth', $data);
         $this->load->view('reports/birth', $data);
     }
     public function le()
@@ -157,24 +157,7 @@ class Report extends CI_Controller
         $data['report'] = $this->crud->death_disease($ampur, $disease, $year);
         $this->layout->view('reports/group_disease_stat', $data);
     }
-    public function amp_health($prov = '44')
-    {
 
-        $prov_code = $this->input->post('prov_code');
-        $prov_code = $this->input->post('prov_code');
-        $amp_code = $this->input->post('amp_code');
-        if ($prov_code == '') {
-            $prov_code = $this->config->item('prov_code');
-        }
-        $this->session->set_userdata('prov_code', $prov_code);
-        $this->session->set_userdata('amp_code', $amp_code);
-        $data['amp'] = $this->basic->get_ampur_list($prov_code);
-        $url = $this->config->item('web_api') . "/reports/yll";
-        $data3 = array("sex" => "3", "prov" => $prov_code, "amp" => $amp_code);
-        
-        $data['yll7'] = (array)json_decode($this->CallAPI($url, $data3));
-        $this->layout->view('reports/amp_health', $data);
-    }
 
     public function  CallAPI($url, $data)
     {

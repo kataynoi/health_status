@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ระบบงานสถานะสุขภาพ R7<?php echo $this->session->userdata('fullname');?></title>
+    <title>ระบบงานสถานะสุขภาพ R7 <?php echo $this->session->userdata('fullname'); ?></title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -15,17 +15,17 @@
     <script src="<?php echo base_url() ?>js/jquery.blockUI.js"></script>
     <script src="<?php echo base_url() ?>js/jquery.maskedinput.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="<?php echo base_url()?>js/jquery.numeric.js"></script>
-    <script src="<?php echo base_url()?>assets/apps/js/apps.js"></script>
-    <script src="<?php echo base_url()?>assets/apps/js/basic.js"></script>
-    <script src="<?php echo base_url()?>js/underscore.min.js"></script>
+    <script src="<?php echo base_url() ?>js/jquery.numeric.js"></script>
+    <script src="<?php echo base_url() ?>assets/apps/js/apps.js"></script>
+    <script src="<?php echo base_url() ?>assets/apps/js/basic.js"></script>
+    <script src="<?php echo base_url() ?>js/underscore.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-    
-    
+
+
 
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="<?php echo base_url('/') ?>css/styles.css" rel="stylesheet" />
@@ -59,7 +59,27 @@
     </footer>
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
-        <div class="container"><small>Copyright &copy; Dechachit@สารคามพร้อม.com 2022</small></div>
+        <div class="container"><small>Copyright &copy; Dechachit@สารคามพร้อม.com 2022</small>
+            <!-- Histats.com  (div with counter) -->
+            <div id="histats_counter"></div>
+            <!-- Histats.com  START  (aync)-->
+            <script type="text/javascript">
+                var _Hasync = _Hasync || [];
+                _Hasync.push(['Histats.start', '1,4776764,4,100,103,48,00011000']);
+                _Hasync.push(['Histats.fasi', '1']);
+                _Hasync.push(['Histats.track_hits', '']);
+                (function() {
+                    var hs = document.createElement('script');
+                    hs.type = 'text/javascript';
+                    hs.async = true;
+                    hs.src = ('//s10.histats.com/js15_as.js');
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+                })();
+            </script>
+            <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4776764&101" alt="" border="0"></a></noscript>
+            <!-- Histats.com  END  -->
+
+        </div>
     </div>
     <!-- Portfolio Modals-->
 

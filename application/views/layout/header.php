@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="<?php echo base_url(); ?>">สถิติชีพ เขตสุขภาพที่ 7 <?php echo $this->session->userdata('prov') ;?></a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>">สถิติชีพ เขตสุขภาพที่ 7 <?php echo " " . $this->session->userdata('prov'); ?></a>
         <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -21,7 +21,7 @@
                             <li><a class="dropdown-item" href="<?php echo site_url('/excel_import/birth'); ?>">นำเข้าข้อมูลการเกิด กยผ. </a></li>
                             <li class="divider"></li>
                             <li><a class="dropdown-item" href="<?php echo site_url('/report/deathInMonth'); ?>">ข้อมูลการตายรายเดือน</a></li>
-                     
+
                         </ul>
                         </i>
                     </li>
@@ -39,6 +39,8 @@
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/le'); ?>">LE (Life Expectancy)</a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/hale'); ?>">HALE (Health-adjusted life expectancy)</a></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/yll7'); ?>">YLL (Years of life lost)</a></li>
+                        <li class="divider"></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/report/amp_health'); ?>">ข้อมูลพื้นฐานรายอำเภอ </a></li>
 
                     </ul>
                     </i>
