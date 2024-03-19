@@ -37,7 +37,7 @@
                 <tr>
                     <th rowspan="2">#</th>
                     <th rowspan="2">จังหวัด</th>
-                    <th colspan="7" class="text-center">LE(Life Expectancy)</th>
+                    <th colspan="9" class="text-center">LE(Life Expectancy)</th>
                 </tr>
                 <tr>
                     <th>2559</th>
@@ -47,6 +47,8 @@
                     <th>2563</th>
                     <th>2564</th>
                     <th>2565</th>
+                    <th>2566</th>
+                    <th>2567[1M]</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,7 +65,9 @@
                     <td>" . number_format($r->y2019 ? $r->y2019 : 0, 4) . " </td>
                     <td>" . number_format($r->y2020 ? $r->y2020 : 0, 4) . " </td>
                     <td>" . number_format($r->y2021 ? $r->y2021 : 0, 4) . " </td>
-                    <td>" . number_format($r->y2022 ? $r->y2022 : 0, 4) . " </td></tr>";
+                    <td>" . number_format($r->y2022 ? $r->y2022 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2023 ? $r->y2023 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2024 ? $r->y2024 : 0, 4) . " </td></tr>";
                     $n++;
                 }
 
@@ -86,7 +90,7 @@
                 <tr>
                     <th rowspan="2">#</th>
                     <th rowspan="2">จังหวัด</th>
-                    <th colspan="7" class="text-center">LE(Life Expectancy)</th>
+                    <th colspan="9" class="text-center">LE(Life Expectancy)</th>
                 </tr>
                 <tr>
                     <th>2559</th>
@@ -96,6 +100,8 @@
                     <th>2563</th>
                     <th>2564</th>
                     <th>2565</th>
+                    <th>2566</th>
+                    <th>2567[1M]</th>
                 </tr>
             </thead>
             <tbody>
@@ -112,7 +118,9 @@
                     <td>" . number_format($r->y2019 ? $r->y2019 : 0, 4) . " </td>
                     <td>" . number_format($r->y2020 ? $r->y2020 : 0, 4) . " </td>
                     <td>" . number_format($r->y2021 ? $r->y2021 : 0, 4) . " </td>
-                    <td>" . number_format($r->y2022 ? $r->y2022 : 0, 4) . " </td></tr>";
+                    <td>" . number_format($r->y2022 ? $r->y2022 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2023 ? $r->y2023 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2024 ? $r->y2024 : 0, 4) . " </td></tr>";
                     $n++;
                 }
 
@@ -135,7 +143,7 @@
                 <tr>
                     <th rowspan="2">#</th>
                     <th rowspan="2">จังหวัด</th>
-                    <th colspan="7" class="text-center">LE(Life Expectancy)</th>
+                    <th colspan="9" class="text-center">LE(Life Expectancy)</th>
                 </tr>
                 <tr>
                     <th>2559</th>
@@ -145,6 +153,8 @@
                     <th>2563</th>
                     <th>2564</th>
                     <th>2565</th>
+                    <th>2566</th>
+                    <th>2567[1M]</th>
                 </tr>
             </thead>
             <tbody>
@@ -162,7 +172,9 @@
                     <td>" . number_format($r->y2019 ? $r->y2019 : 0, 4) . " </td>
                     <td>" . number_format($r->y2020 ? $r->y2020 : 0, 4) . " </td>
                     <td>" . number_format($r->y2021 ? $r->y2021 : 0, 4) . " </td>
-                    <td>" . number_format($r->y2022 ? $r->y2022 : 0, 4) . " </td></tr>";
+                    <td>" . number_format($r->y2022 ? $r->y2022 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2023 ? $r->y2023 : 0, 4) . " </td>
+                    <td>" . number_format($r->y2024 ? $r->y2024 : 0, 4) . " </td></tr>";
                     $n++;
                 }
 

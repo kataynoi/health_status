@@ -134,6 +134,20 @@ class Report extends CI_Controller
         $data['yll7_female'] = (array)json_decode($this->CallAPI($url, $data2));
         $this->layout->view('reports/yll7', $data);
     }
+    public function top10()
+    {
+        $url = $this->config->item('web_api') . "/reports/top10";
+        $year = $this->input->post('year');
+        $provcode = $this->input->post('provcode');
+        $ampurcode = $this->input->post('ampurcode');
+        $this->session->set_userdata('year', $year);
+        $this->session->set_userdata('provcode', $provcode);
+        $this->session->set_userdata('ampurcode', $ampurcode);
+        $data = array("year" => $year, "provcode" => $provcode, "ampurcode" => $ampurcode);
+        //echo print_r($data);s
+        $data['report'] = (array)json_decode($this->CallAPI($url, $data));
+        $this->layout->view('reports/top10_death', $data);
+    }
     public function  group_disease_stat($id = 1)
     {
         $ampur = $this->input->post('ampurcode');
@@ -205,4 +219,7 @@ class Report extends CI_Controller
         curl_close($ch);
         return $result;
     }
+
+   
 }
+

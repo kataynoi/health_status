@@ -41,6 +41,7 @@
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/yll7'); ?>">YLL (Years of life lost)</a></li>
                         <li class="divider"></li>
                         <li><a class="dropdown-item" href="<?php echo site_url('/report/amp_health'); ?>">ข้อมูลพื้นฐานรายอำเภอ </a></li>
+                        <li><a class="dropdown-item" href="<?php echo site_url('/report/top10'); ?>">จำนวนการตาย 10 ลำดับแรก </a></li>
 
                     </ul>
                     </i>

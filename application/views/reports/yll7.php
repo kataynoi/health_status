@@ -57,6 +57,7 @@
                     <th>2563</th>
                     <th>2564</th>
                     <th>2565</th>
+                    <th>2566</th>
                 </tr>
                 </tr>
             </thead>
@@ -73,7 +74,8 @@
                     <td>" . number_format($r->y2019, 2) . " </td>
                     <td>" . number_format($r->y2020, 2) . " </td>
                     <td>" . number_format($r->y2021, 2) . " </td>
-                    <td>" . number_format($r->y2022, 2) . " </td></tr>";
+                    <td>" . number_format($r->y2022, 2) . " </td>
+                    <td>" . number_format($r->y2023, 2) . " </td></tr>";
                     $n++;
                 }
 
@@ -107,6 +109,7 @@
                     <th>2563</th>
                     <th>2564</th>
                     <th>2565</th>
+                    <th>2566</th>
                 </tr>
                 </tr>
             </thead>
@@ -123,7 +126,8 @@
                     <td>" . number_format($r->y2019, 2) . " </td>
                     <td>" . number_format($r->y2020, 2) . " </td>
                     <td>" . number_format($r->y2021, 2) . " </td>
-                    <td>" . number_format($r->y2022, 2) . " </td></tr>";
+                    <td>" . number_format($r->y2022, 2) . " </td>
+                    <td>" . number_format($r->y2023, 2) . " </td></tr>";
                     $n++;
                 }
 
@@ -157,6 +161,7 @@
                     <th>2563</th>
                     <th>2564</th>
                     <th>2565</th>
+                    <th>2566</th>
                 </tr>
             </thead>
             <tbody>
@@ -172,7 +177,8 @@
                     <td>" . number_format($r->y2019, 2) . " </td>
                     <td>" . number_format($r->y2020, 2) . " </td>
                     <td>" . number_format($r->y2021, 2) . " </td>
-                    <td>" . number_format($r->y2022, 2) . " </td></tr>";
+                    <td>" . number_format($r->y2022, 2) . " </td>
+                    <td>" . number_format($r->y2023, 2) . " </td></tr>";
                     $n++;
                 }
 

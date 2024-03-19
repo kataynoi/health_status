@@ -34,7 +34,7 @@
                 <tr>
                     <th rowspan="2">#</th>
                     <th rowspan="2">จังหวัด</th>
-                    <th colspan="7" class="text-center">HALE(Health adjusted life expectancy)</th>
+                    <th colspan="9" class="text-center">HALE(Health adjusted life expectancy)</th>
                 </tr>
                 <tr>
                     <th>2559</th>
@@ -44,6 +44,8 @@
                     <th>2563</th>
                     <th>2564</th>
                     <th>2565</th>
+                    <th>2566</th>
+                    <th>2567[1M]</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,7 +62,9 @@
                     <td>" . number_format($r->y2019, 4) . " </td>
                     <td>" . number_format($r->y2020, 4) . " </td>
                     <td>" . number_format($r->y2021, 4) . " </td>
-                    <td>" . number_format($r->y2022, 4) . " </td></tr>";
+                    <td>" . number_format($r->y2022, 4) . " </td>
+                    <td>" . number_format($r->y2023, 4) . " </td>
+                    <td>" . number_format($r->y2024, 4) . " </td></tr>";
                     $n++;
                 }
 
@@ -83,7 +87,7 @@
                 <tr>
                     <th rowspan="2">#</th>
                     <th rowspan="2">จังหวัด</th>
-                    <th colspan="7" class="text-center">HALE(health adjusted life expectancy)</th>
+                    <th colspan="9" class="text-center">HALE(health adjusted life expectancy)</th>
                 </tr>
                 <tr>
                     <th>2559</th>
@@ -93,6 +97,8 @@
                     <th>2563</th>
                     <th>2564</th>
                     <th>2565</th>
+                    <th>2566</th>
+                    <th>2567[1M]</th>
                 </tr>
             </thead>
             <tbody>
@@ -110,7 +116,9 @@
                     <td>" . number_format($r->y2019, 4) . " </td>
                     <td>" . number_format($r->y2020, 4) . " </td>
                     <td>" . number_format($r->y2021, 4) . " </td>
-                    <td>" . number_format($r->y2022, 4) . " </td></tr>";
+                    <td>" . number_format($r->y2022, 4) . " </td>
+                    <td>" . number_format($r->y2023, 4) . " </td>
+                    <td>" . number_format($r->y2024, 4) . " </td></tr>";
                     $n++;
                 }
 
@@ -133,7 +141,7 @@
                 <tr>
                     <th rowspan="2">#</th>
                     <th rowspan="2">จังหวัด</th>
-                    <th colspan="7 class=" text-center">HALE(Health adjusted life expectancy)</th>
+                    <th colspan="9" class=" text-center">HALE(Health adjusted life expectancy)</th>
                 </tr>
                 <tr>
                     <th>2559</th>
@@ -143,6 +151,8 @@
                     <th>2563</th>
                     <th>2564</th>
                     <th>2565</th>
+                    <th>2566</th>
+                    <th>2567[1M]</th>
                 </tr>
             </thead>
             <tbody>
@@ -160,7 +170,9 @@
                     <td>" . number_format($r->y2019, 4) . " </td>
                     <td>" . number_format($r->y2020, 4) . " </td>
                     <td>" . number_format($r->y2021, 4) . " </td>
-                    <td>" . number_format($r->y2022, 4) . " </td></tr>";
+                    <td>" . number_format($r->y2022, 4) . " </td>
+                    <td>" . number_format($r->y2023, 4) . " </td>
+                    <td>" . number_format($r->y2024, 4) . " </td></tr>";
                     $n++;
                 }
 
