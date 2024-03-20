@@ -7,7 +7,6 @@
         get_province_name($this->session->userdata('provcode'))." อำเภอ ".get_ampur_name($this->session->userdata('ampurcode'))?>
     </div>
     <div class="panel-body">
-        <?php echo "Year :" . $this->session->userdata('year_ngob'); ?>
         <div class="navbar navbar-default">
             <form action="<?php echo site_url('report/top10/')?>" class="form-row" method="post">
                 <div class="row">
